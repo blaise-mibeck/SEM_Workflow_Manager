@@ -1,0 +1,12 @@
+# Qt bindings - QtPy allows using either PyQt5 or PySide2
+qtpy>=1.9.0
+# Use one of the following:
+pyqt5>=5.15.0
+# pyside2>=5.15.0
+
+# Image processing
+pillow>=8.0.0
+opencv-python>=4.5.0
+
+# Data handling
+numpy>=1.19.0

@@ -1,0 +1,31 @@
+sem_workflow_manager/
+│
+├── main.py                     # Application entry point
+├── app.py                      # Main application class
+├── utils/
+│   ├── __init__.py
+│   ├── logger.py               # Logging utilities
+│   └── config.py               # Configuration management
+│
+├── models/
+│   ├── __init__.py
+│   ├── session.py              # Session data model
+│   ├── metadata_extractor.py   # Existing metadata extraction module
+│   └── image_metadata.py       # Image metadata model
+│
+├── workflows/
+│   ├── __init__.py
+│   ├── workflow_base.py        # Base workflow class
+│   ├── mag_grid.py             # MagGrid workflow implementation
+│   └── grid_generator.py       # Grid visualization generation
+│
+├── ui/
+│   ├── __init__.py
+│   ├── main_window.py          # Main application window
+│   ├── session_panel.py        # Session information panel
+│   ├── workflow_panel.py       # Workflow selection and control panel
+│   └── grid_preview.py         # Grid visualization preview
+│
+└── resources/
+    ├── styles.qss              # QtPy stylesheet
+    └── icons/                  # UI icons
