@@ -5530,3 +5530,16 @@ logs/ui.session_panel_20250314.log
 logs/ui.workflow_panel_20250314.log
 logs/workflows.mag_grid_20250314.log
 logs/workflows.workflow_base_20250314.log
+logs/__main___20250315.log
+logs/models.session_20250315.log
+logs/sem_workflow_manager_20250315.log
+logs/ui.compare_grid_panel_20250315.log
+logs/ui.enhanced_folder_dialog_20250315.log
+logs/ui.grid_preview_20250315.log
+logs/ui.main_window_20250315.log
+logs/ui.session_panel_20250315.log
+logs/ui.workflow_panel_20250315.log
+logs/utils.config_20250315.log
+logs/workflows.compare_grid_20250315.log
+logs/workflows.mag_grid_20250315.log
+logs/workflows.workflow_base_20250315.log

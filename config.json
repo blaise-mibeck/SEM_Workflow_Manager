@@ -1,0 +1,19 @@
+{
+    "recent_sessions": [],
+    "max_recent_sessions": 10,
+    "default_export_path": "C:\\Users\\bmibeck/Documents",
+    "log_level": "INFO",
+    "template_match_threshold": 0.5,
+    "ui": {
+        "theme": "default",
+        "font_size": 10,
+        "window_size": [
+            1200,
+            800
+        ],
+        "window_position": [
+            100,
+            100
+        ]
+    }
+}

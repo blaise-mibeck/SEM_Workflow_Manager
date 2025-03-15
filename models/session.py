@@ -28,6 +28,7 @@ class SessionInfo:
         
         # Basic session information
         self.sample_id = ""
+        self.sample_name = ""  # Added sample name field
         self.sample_type = ""
         self.preparation_method = ""
         self.operator_name = ""
@@ -54,6 +55,7 @@ class SessionInfo:
                 data = json.load(f)
             
             self.sample_id = data.get("sample_id", "")
+            self.sample_name = data.get("sample_name", "")  # Load sample name
             self.sample_type = data.get("sample_type", "")
             self.preparation_method = data.get("preparation_method", "")
             self.operator_name = data.get("operator_name", "")
@@ -88,6 +90,7 @@ class SessionInfo:
             # Create data dictionary
             data = {
                 "sample_id": self.sample_id,
+                "sample_name": self.sample_name,  # Save sample name
                 "sample_type": self.sample_type,
                 "preparation_method": self.preparation_method,
                 "operator_name": self.operator_name,
@@ -303,6 +306,10 @@ class SessionManager:
         logger.info(f"Extracted metadata for {len(self.metadata)} image files")
         return self.metadata
     
+    """
+    Improvements to SessionManager metadata handling
+    """
+
     def _save_metadata_csv(self):
         """
         Save extracted metadata to CSV file in the session folder.
@@ -316,12 +323,22 @@ class SessionManager:
         try:
             import csv
             
-            csv_file = os.path.join(self.session_folder, "metadata.csv")
+            # Get session ID for filename
+            session_id = os.path.basename(self.session_folder)
+            
+            # Use session ID in the metadata filename
+            csv_file = os.path.join(self.session_folder, f"{session_id}_metadata.csv")
+            
+            # Also save with the original name for backward compatibility
+            legacy_csv_file = os.path.join(self.session_folder, "metadata.csv")
             
             # Get all possible field names from metadata
             fieldnames = set()
             for metadata in self.metadata.values():
                 fieldnames.update(metadata.to_dict().keys())
+            
+            # Add session_id field
+            fieldnames.add("session_id")
             
             # Sort fieldnames for consistent ordering
             fieldnames = sorted(list(fieldnames))
@@ -332,10 +349,98 @@ class SessionManager:
                 writer.writeheader()
                 
                 for image_path, metadata in self.metadata.items():
-                    writer.writerow(metadata.to_dict())
+                    # Create a copy of the metadata dict
+                    meta_dict = metadata.to_dict()
+                    
+                    # Add session_id
+                    meta_dict["session_id"] = session_id
+                    
+                    writer.writerow(meta_dict)
+            
+            # Also save with original name for backward compatibility
+            with open(legacy_csv_file, 'w', newline='') as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+                
+                for image_path, metadata in self.metadata.items():
+                    # Create a copy of the metadata dict
+                    meta_dict = metadata.to_dict()
+                    
+                    # Add session_id
+                    meta_dict["session_id"] = session_id
+                    
+                    writer.writerow(meta_dict)
             
             logger.info(f"Saved metadata to: {csv_file}")
             return True
         except Exception as e:
             logger.error(f"Error saving metadata CSV: {str(e)}")
+            return False
+
+    def _load_metadata_csv(self):
+        """
+        Load extracted metadata from CSV file in the session folder.
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        if not self.session_folder:
+            return False
+        
+        try:
+            import csv
+            from models.metadata_extractor import ImageMetadata
+            
+            # Get session ID for filename
+            session_id = os.path.basename(self.session_folder)
+            
+            # Check for session ID prefixed metadata file first
+            csv_file = os.path.join(self.session_folder, f"{session_id}_metadata.csv")
+            
+            # Fall back to legacy filename if not found
+            if not os.path.exists(csv_file):
+                csv_file = os.path.join(self.session_folder, "metadata.csv")
+                
+                if not os.path.exists(csv_file):
+                    logger.info(f"Metadata CSV file not found: {csv_file}")
+                    return False
+            
+            # Load metadata from CSV
+            self.metadata = {}
+            
+            with open(csv_file, 'r', newline='') as f:
+                reader = csv.DictReader(f)
+                
+                for row in reader:
+                    # Remove session_id field if present (not needed in ImageMetadata)
+                    row.pop("session_id", None)
+                    
+                    # Convert string values to appropriate types
+                    for key, value in row.items():
+                        if value == '':
+                            row[key] = None
+                        elif value == 'None':
+                            row[key] = None
+                        else:
+                            try:
+                                # Try to convert to numeric types if possible
+                                if '.' in value:
+                                    row[key] = float(value)
+                                else:
+                                    row[key] = int(value)
+                            except (ValueError, TypeError):
+                                # Keep as string if conversion fails
+                                pass
+                    
+                    # Create metadata object from row
+                    metadata = ImageMetadata.from_dict(row)
+                    
+                    # Store metadata object by image path
+                    if metadata.image_path:
+                        self.metadata[metadata.image_path] = metadata
+            
+            logger.info(f"Loaded metadata for {len(self.metadata)} images from CSV file")
+            return True
+        except Exception as e:
+            logger.error(f"Error loading metadata from CSV: {str(e)}")
             return False

@@ -11,6 +11,44 @@ from utils.logger import Logger
 logger = Logger(__name__)
 
 
+def convert_to_serializable(obj):
+    """
+    Convert numpy and pandas types to JSON serializable Python types.
+    
+    Args:
+        obj: Object to convert
+        
+    Returns:
+        JSON serializable object
+    """
+    # Try to import numpy and pandas
+    try:
+        import numpy as np
+        import pandas as pd
+        
+        if isinstance(obj, dict):
+            return {k: convert_to_serializable(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_to_serializable(item) for item in obj]
+        elif isinstance(obj, (np.integer, np.int64)):
+            return int(obj)
+        elif isinstance(obj, (np.floating, np.float64)):
+            return float(obj)
+        elif isinstance(obj, np.ndarray):
+            return convert_to_serializable(obj.tolist())
+        elif isinstance(obj, pd.Series):
+            return convert_to_serializable(obj.tolist())
+        elif isinstance(obj, pd.DataFrame):
+            return convert_to_serializable(obj.to_dict(orient='records'))
+        elif pd.isna(obj):
+            return None
+        else:
+            return obj
+    except ImportError:
+        # If numpy or pandas aren't available, just return the object
+        return obj
+
+
 class WorkflowBase(ABC):
     """
     Base class for all workflow types.
@@ -101,21 +139,47 @@ class WorkflowBase(ABC):
         Returns:
             str: Path to saved collection file
         """
+        # Make sure workflow folder is set up - important for CompareGrid!
         if not self.workflow_folder:
             self._setup_workflow_folder()
+            
+            # If still not set, use a default location in the main session folder
+            if not self.workflow_folder and self.session_manager and self.session_manager.session_folder:
+                workflow_name = self.__class__.__name__
+                self.workflow_folder = os.path.join(
+                    self.session_manager.session_folder, 
+                    workflow_name
+                )
+                
+                if not os.path.exists(self.workflow_folder):
+                    os.makedirs(self.workflow_folder)
+                    logger.info(f"Created fallback workflow folder: {self.workflow_folder}")
         
-        # Generate a unique ID for the collection if it doesn't have one
+        # Create a unique ID for the collection if it doesn't have one
         if "id" not in collection:
             import uuid
             collection["id"] = str(uuid.uuid4())
         
         # Generate a filename for the collection
         filename = f"collection_{collection['id']}.json"
+        
+        # If workflow folder is still None, this will crash, but that means
+        # there's a deeper issue with the session structure
+        if not self.workflow_folder:
+            logger.error("No workflow folder available for saving collection")
+            # Use a temp folder as last resort
+            import tempfile
+            self.workflow_folder = tempfile.gettempdir()
+            logger.info(f"Using temporary folder as fallback: {self.workflow_folder}")
+        
         filepath = os.path.join(self.workflow_folder, filename)
+        
+        # Convert collection to JSON serializable format
+        serializable_collection = convert_to_serializable(collection)
         
         # Save the collection to a JSON file
         with open(filepath, 'w') as f:
-            json.dump(collection, f, indent=4)
+            json.dump(serializable_collection, f, indent=4)
         
         logger.info(f"Saved collection: {filepath}")
         return filepath
@@ -149,7 +213,7 @@ class WorkflowBase(ABC):
     
     def export_grid(self, grid_image, collection):
         """
-        Export a grid visualization as a PNG file.
+        Export a grid visualization as a PNG file to the project folder.
         
         Args:
             grid_image: PIL Image object
@@ -158,55 +222,115 @@ class WorkflowBase(ABC):
         Returns:
             tuple: (image_path, caption_path) paths to the exported files
         """
-        if not self.workflow_folder:
-            self._setup_workflow_folder()
+        # Add necessary imports
+        import datetime
         
-        # Get sample ID from session info
-        sample_id = "Unknown"
-        if self.session_manager and self.session_manager.current_session:
-            sample_id = self.session_manager.current_session.sample_id
-        
-        # Get session folder name (SEM1-###)
-        session_folder_name = os.path.basename(self.session_manager.session_folder)
-        
-        # Determine the next available grid number
-        grid_num = 1
-        while True:
-            # Check if any files with this number exist
-            test_filename = f"{session_folder_name}_{sample_id}_MagGrid-{grid_num}.png"
-            test_path = os.path.join(self.workflow_folder, test_filename)
-            if not os.path.exists(test_path):
-                break
-            grid_num += 1
-        
-        # Generate filenames with the new format
-        base_filename = f"{session_folder_name}_{sample_id}_MagGrid-{grid_num}"
-        image_filename = f"{base_filename}.png"
-        caption_filename = f"{base_filename}.txt"
-        collection_filename = f"{base_filename}.json"
-        
-        # Create full paths
-        image_path = os.path.join(self.workflow_folder, image_filename)
-        caption_path = os.path.join(self.workflow_folder, caption_filename)
-        collection_path = os.path.join(self.workflow_folder, collection_filename)
-        
-        # Save the grid image
-        grid_image.save(image_path, format="PNG")
-        
-        # Create a caption file
-        with open(caption_path, 'w') as f:
-            f.write(self._generate_caption(collection))
-        
-        # Save the collection data
-        with open(collection_path, 'w') as f:
-            import json
-            json.dump(collection, f, indent=4)
-        
-        logger.info(f"Exported grid: {image_path}")
-        logger.info(f"Exported caption: {caption_path}")
-        logger.info(f"Exported collection data: {collection_path}")
-        
-        return image_path, caption_path
+        try:
+            # Determine project folder (parent of sessions)
+            project_folder = None
+            
+            if self.session_manager and self.session_manager.session_folder:
+                # Use the parent directory of the current session as the project folder
+                project_folder = os.path.dirname(self.session_manager.session_folder)
+            
+            # If for some reason we can't determine the project folder, fall back to the workflow folder
+            if not project_folder:
+                if self.workflow_folder:
+                    project_folder = self.workflow_folder
+                elif self.session_manager and self.session_manager.session_folder:
+                    project_folder = os.path.join(
+                        self.session_manager.session_folder, 
+                        self.__class__.__name__
+                    )
+                    if not os.path.exists(project_folder):
+                        os.makedirs(project_folder)
+                else:
+                    # Last resort fallback to temp directory
+                    import tempfile
+                    project_folder = tempfile.gettempdir()
+                    logger.warning(f"Using temporary folder as fallback: {project_folder}")
+            
+            # Create a "Grids" folder in the project folder
+            grids_folder = os.path.join(project_folder, "Grids")
+            if not os.path.exists(grids_folder):
+                try:
+                    os.makedirs(grids_folder)
+                    logger.info(f"Created Grids folder: {grids_folder}")
+                except Exception as e:
+                    logger.error(f"Failed to create Grids folder, using project folder: {str(e)}")
+                    grids_folder = project_folder
+            
+            # Get session information
+            if self.session_manager and self.session_manager.current_session:
+                sample_id = self.session_manager.current_session.sample_id
+                session_folder_name = os.path.basename(self.session_manager.session_folder)
+            else:
+                sample_id = "Unknown"
+                session_folder_name = "Session"
+            
+            # For CompareGrid, customize the export name with sample IDs from all sessions
+            if collection.get("type") == "CompareGrid":
+                workflow_name = "CompareGrid"
+                
+                # Collect sample IDs from all images in the collection
+                sample_ids = []
+                for img in collection.get("images", []):
+                    if img.get("sample_id") and img.get("sample_id") not in sample_ids:
+                        sample_ids.append(img.get("sample_id"))
+                
+                # Use combined sample IDs in filename (limit to first 3 for length)
+                if sample_ids:
+                    if len(sample_ids) <= 3:
+                        sample_id = "_".join(sample_ids)
+                    else:
+                        sample_id = "_".join(sample_ids[:3]) + "_etc"
+            else:
+                workflow_name = self.__class__.__name__
+            
+            # Add magnification and mode to the filename for better identification
+            mag = collection.get("magnification", "")
+            mode = collection.get("mode", "")
+            
+            # Add timestamp for uniqueness
+            timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+            
+            # Generate a unique filename
+            if mag and mode:
+                base_filename = f"{workflow_name}_{mode}_{mag}x_{sample_id}_{timestamp}"
+            else:
+                base_filename = f"{workflow_name}_{sample_id}_{timestamp}"
+            
+            image_filename = f"{base_filename}.png"
+            caption_filename = f"{base_filename}.txt"
+            collection_filename = f"{base_filename}.json"
+            
+            # Create full paths
+            image_path = os.path.join(grids_folder, image_filename)
+            caption_path = os.path.join(grids_folder, caption_filename)
+            collection_path = os.path.join(grids_folder, collection_filename)
+            
+            # Save the grid image
+            logger.info(f"Saving grid image to: {image_path}")
+            grid_image.save(image_path, format="PNG")
+            
+            # Create a caption file
+            logger.info(f"Saving caption to: {caption_path}")
+            with open(caption_path, 'w') as f:
+                f.write(self._generate_caption(collection))
+            
+            # Convert to serializable format and save the collection data
+            logger.info(f"Saving collection data to: {collection_path}")
+            serializable_collection = convert_to_serializable(collection)
+            with open(collection_path, 'w') as f:
+                json.dump(serializable_collection, f, indent=4)
+            
+            logger.info(f"Export completed successfully")
+            
+            return image_path, caption_path
+            
+        except Exception as e:
+            logger.exception(f"Error during export: {str(e)}")
+            raise Exception(f"Failed to export grid: {str(e)}")
     
     def _generate_caption(self, collection):
         """

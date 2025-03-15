@@ -5,7 +5,7 @@ Session information panel for SEM Image Workflow Manager.
 import os
 from qtpy import QtWidgets, QtCore, QtGui
 from utils.logger import Logger
-
+from ui.enhanced_folder_dialog import EnhancedFolderDialog
 logger = Logger(__name__)
 
 
@@ -118,12 +118,8 @@ class SessionPanel(QtWidgets.QGroupBox):
     
     def _browse_session_folder(self):
         """Open a folder dialog to select a session folder."""
-        folder_path = QtWidgets.QFileDialog.getExistingDirectory(
-            self,
-            "Select Session Folder",
-            os.path.expanduser("~")
-        )
-        
+
+        folder_path = EnhancedFolderDialog.get_folder(self, "Select Session Folder", os.path.expanduser("~"))
         if folder_path:
             self._open_session_folder(folder_path)
     
