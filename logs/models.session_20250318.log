@@ -59,3 +59,8 @@
 2025-03-18 12:26:37,083 - models.session - INFO - Loaded metadata for 53 images from CSV file
 2025-03-18 12:26:37,083 - models.session - INFO - Opened session with 53 image files: C:/Z/_Blaise_Tools/_Notes/SEM1-436
 2025-03-18 12:26:41,453 - models.session - ERROR - Error saving metadata CSV: [Errno 13] Permission denied: 'C:/Z/_Blaise_Tools/_Notes/SEM1-436\\SEM1-436_metadata.csv'
+2025-03-18 12:30:05,879 - models.session - INFO - SessionManager initialized
+2025-03-18 12:30:10,218 - models.session - INFO - Loaded session info: C:/Z/_Blaise_Tools/_Notes/SEM1-436\session_info.json
+2025-03-18 12:30:10,225 - models.session - INFO - Loaded metadata for 53 images from CSV file
+2025-03-18 12:30:10,225 - models.session - INFO - Opened session with 53 image files: C:/Z/_Blaise_Tools/_Notes/SEM1-436
+2025-03-18 12:30:14,516 - models.session - ERROR - Error saving metadata CSV: [Errno 13] Permission denied: 'C:/Z/_Blaise_Tools/_Notes/SEM1-436\\SEM1-436_metadata.csv'

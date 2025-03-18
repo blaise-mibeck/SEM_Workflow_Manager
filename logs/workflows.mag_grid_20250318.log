@@ -389,3 +389,82 @@
 2025-03-18 12:26:51,096 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [500, 3701]
 2025-03-18 12:26:51,163 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [714, 3701]
 2025-03-18 12:26:51,163 - workflows.mag_grid - INFO - Discovered 31 MagGrid collections
+2025-03-18 12:30:15,734 - workflows.mag_grid - INFO - Starting MagGrid collection discovery
+2025-03-18 12:30:16,092 - workflows.mag_grid - INFO - Found MagGrid pyramid with 6 levels: Magnifications: [100, 250, 499, 1000, 2000, 3999]
+2025-03-18 12:30:16,441 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [100, 499, 3999]
+2025-03-18 12:30:16,721 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [250, 499, 1000, 2000, 3999]
+2025-03-18 12:30:16,932 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3999]
+2025-03-18 12:30:17,114 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [499, 1000, 2000, 3999]
+2025-03-18 12:30:17,228 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [1000, 2000, 3999]
+2025-03-18 12:30:17,287 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [2000, 3999]
+2025-03-18 12:30:17,387 - workflows.mag_grid - WARNING - Unusual scale factor: 0.0010000030236235714, using default 0.5
+2025-03-18 12:30:17,526 - workflows.mag_grid - WARNING - Unusual scale factor: 0.0010000030236235714, using default 0.5
+2025-03-18 12:30:17,661 - workflows.mag_grid - WARNING - Unusual scale factor: 0.005, using default 0.5
+2025-03-18 12:30:17,704 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [100, 499]
+2025-03-18 12:30:17,736 - workflows.mag_grid - WARNING - Unusual scale factor: 0.005, using default 0.5
+2025-03-18 12:30:18,272 - workflows.mag_grid - INFO - Found MagGrid pyramid with 7 levels: Magnifications: [150, 250, 499, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:18,728 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:19,186 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:19,651 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:20,119 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:20,577 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:21,030 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [200, 3999, 7999, 16000]
+2025-03-18 12:30:21,499 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:21,938 - workflows.mag_grid - INFO - Found MagGrid pyramid with 6 levels: Magnifications: [250, 499, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:22,286 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [499, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:22,620 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [499, 2000, 3999, 7999, 16000]
+2025-03-18 12:30:22,893 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [1000, 3999, 7999, 16000]
+2025-03-18 12:30:23,091 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [2000, 3999, 7999, 16000]
+2025-03-18 12:30:23,233 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [3999, 7999, 16000]
+2025-03-18 12:30:23,307 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [7999, 16000]
+2025-03-18 12:30:23,863 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [203, 3701]
+2025-03-18 12:30:23,934 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-18 12:30:24,008 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-18 12:30:24,083 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-18 12:30:24,158 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-18 12:30:24,247 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [500, 3701]
+2025-03-18 12:30:24,334 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [500, 3701]
+2025-03-18 12:30:24,409 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [714, 3701]
+2025-03-18 12:30:24,409 - workflows.mag_grid - INFO - Discovered 31 MagGrid collections
+2025-03-18 12:31:37,072 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 6 images
+2025-03-18 12:31:37,169 - workflows.mag_grid - INFO - Created MagGrid visualization with 6 images
+2025-03-18 12:31:40,963 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 6 images
+2025-03-18 12:31:41,054 - workflows.mag_grid - INFO - Created MagGrid visualization with 6 images
+2025-03-18 12:31:45,544 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 3 images
+2025-03-18 12:31:45,601 - workflows.mag_grid - INFO - Created MagGrid visualization with 3 images
+2025-03-18 12:31:50,237 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 6 images
+2025-03-18 12:31:50,333 - workflows.mag_grid - INFO - Created MagGrid visualization with 6 images
+2025-03-18 12:32:03,628 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 4 images
+2025-03-18 12:32:03,689 - workflows.mag_grid - INFO - Created MagGrid visualization with 4 images
+2025-03-18 12:32:10,802 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 3 images
+2025-03-18 12:32:10,854 - workflows.mag_grid - INFO - Created MagGrid visualization with 3 images
+2025-03-18 12:32:12,290 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:12,324 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:13,584 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:13,607 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:19,183 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:19,217 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:29,208 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:29,224 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:33,185 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:33,210 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:34,290 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:34,319 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:37,619 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:37,653 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:39,192 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:39,227 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:41,603 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:41,639 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:42,420 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:42,454 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:43,689 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 4 images
+2025-03-18 12:32:43,762 - workflows.mag_grid - INFO - Created MagGrid visualization with 4 images
+2025-03-18 12:32:46,312 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 3 images
+2025-03-18 12:32:46,364 - workflows.mag_grid - INFO - Created MagGrid visualization with 3 images
+2025-03-18 12:32:46,963 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 5 images
+2025-03-18 12:32:47,044 - workflows.mag_grid - INFO - Created MagGrid visualization with 5 images
+2025-03-18 12:32:48,349 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x1 for 2 images
+2025-03-18 12:32:48,384 - workflows.mag_grid - INFO - Created MagGrid visualization with 2 images
+2025-03-18 12:32:51,027 - workflows.mag_grid - INFO - Creating MagGrid with layout 2x2 for 4 images
+2025-03-18 12:32:51,093 - workflows.mag_grid - INFO - Created MagGrid visualization with 4 images
