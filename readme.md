@@ -57,6 +57,44 @@ python main.py
 5. **Configure Layout**: Adjust the grid layout as needed.
 6. **Export Grid**: Save the visualization for use in reports.
 
+## Session Information
+
+The application organizes images into sessions, with each session having the following information:
+
+### Session Fields
+
+- **Sample ID**: Identifier used internally to identify the sample being imaged. This is the primary identifier used within the application.
+
+- **TCL ID**: ID assigned by TCL to the original as-received sample. This may or may not be the same as the Sample ID, and is used for tracking samples through the lab system.
+
+- **Client Sample Name**: Name or lot number assigned by the client. This is most meaningful to the client and may be how the sample is discussed in reports.
+
+- **Sample Type**: A description of the physical form of the sample, such as:
+  - Dry powder
+  - Paste
+  - Solid
+  - Small part
+  - Coating
+  - Film
+  - Granule
+  - etc.
+
+- **Preparation Method**: The method used to prepare the sample for SEM imaging, such as:
+  - Flick
+  - Dish
+  - Dispersed
+  - Drop cast
+  - Cross-section
+  - Adhered
+  - Sputter coated
+  - etc.
+
+- **Operator Name**: The name of the person who operated the SEM for this session.
+
+- **Notes**: Additional information about the session, sample, or imaging conditions.
+
+These fields help organize and categorize the SEM images, making it easier to find and compare samples across sessions.
+
 ## ModeGrid Workflow
 
 The ModeGrid workflow allows you to compare SEM images of the same scene captured with different imaging modes:
