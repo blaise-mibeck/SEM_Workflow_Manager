@@ -1,0 +1,42 @@
+2025-03-17 18:49:38,623 - workflows.mag_grid - WARNING - No metadata available for MagGrid collection discovery
+2025-03-17 18:49:55,046 - workflows.mag_grid - INFO - Starting MagGrid collection discovery
+2025-03-17 18:49:55,466 - workflows.mag_grid - INFO - Found MagGrid pyramid with 6 levels: Magnifications: [100, 250, 499, 1000, 2000, 3999]
+2025-03-17 18:49:55,816 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [100, 499, 3999]
+2025-03-17 18:49:56,098 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [250, 499, 1000, 2000, 3999]
+2025-03-17 18:49:56,301 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3999]
+2025-03-17 18:49:56,479 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [499, 1000, 2000, 3999]
+2025-03-17 18:49:56,590 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [1000, 2000, 3999]
+2025-03-17 18:49:56,647 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [2000, 3999]
+2025-03-17 18:49:56,761 - workflows.mag_grid - WARNING - Unusual scale factor: 0.0010000030236235714, using default 0.5
+2025-03-17 18:49:56,902 - workflows.mag_grid - WARNING - Unusual scale factor: 0.0010000030236235714, using default 0.5
+2025-03-17 18:49:57,042 - workflows.mag_grid - WARNING - Unusual scale factor: 0.005, using default 0.5
+2025-03-17 18:49:57,085 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [100, 499]
+2025-03-17 18:49:57,116 - workflows.mag_grid - WARNING - Unusual scale factor: 0.005, using default 0.5
+2025-03-17 18:49:57,675 - workflows.mag_grid - INFO - Found MagGrid pyramid with 7 levels: Magnifications: [150, 250, 499, 2000, 3999, 7999, 16000]
+2025-03-17 18:49:58,145 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:49:58,592 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:49:59,060 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:49:59,505 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:49:59,964 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:50:00,421 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [200, 3999, 7999, 16000]
+2025-03-17 18:50:00,875 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [200, 2000, 3999, 7999, 16000]
+2025-03-17 18:50:01,300 - workflows.mag_grid - INFO - Found MagGrid pyramid with 6 levels: Magnifications: [250, 499, 2000, 3999, 7999, 16000]
+2025-03-17 18:50:01,621 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [499, 2000, 3999, 7999, 16000]
+2025-03-17 18:50:01,946 - workflows.mag_grid - INFO - Found MagGrid pyramid with 5 levels: Magnifications: [499, 2000, 3999, 7999, 16000]
+2025-03-17 18:50:02,209 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [1000, 3999, 7999, 16000]
+2025-03-17 18:50:02,398 - workflows.mag_grid - INFO - Found MagGrid pyramid with 4 levels: Magnifications: [2000, 3999, 7999, 16000]
+2025-03-17 18:50:02,536 - workflows.mag_grid - INFO - Found MagGrid pyramid with 3 levels: Magnifications: [3999, 7999, 16000]
+2025-03-17 18:50:02,608 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [7999, 16000]
+2025-03-17 18:50:03,173 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [203, 3701]
+2025-03-17 18:50:03,243 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-17 18:50:03,311 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-17 18:50:03,381 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-17 18:50:03,450 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [499, 3701]
+2025-03-17 18:50:03,535 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [500, 3701]
+2025-03-17 18:50:03,618 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [500, 3701]
+2025-03-17 18:50:03,685 - workflows.mag_grid - INFO - Found MagGrid pyramid with 2 levels: Magnifications: [714, 3701]
+2025-03-17 18:50:03,685 - workflows.mag_grid - INFO - Discovered 31 MagGrid collections
+2025-03-17 18:50:12,982 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 6 images
+2025-03-17 18:50:13,083 - workflows.mag_grid - INFO - Created MagGrid visualization with 6 images
+2025-03-17 18:50:22,385 - workflows.mag_grid - INFO - Creating MagGrid with layout 3x2 for 6 images
+2025-03-17 18:50:22,480 - workflows.mag_grid - INFO - Created MagGrid visualization with 6 images

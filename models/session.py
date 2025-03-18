@@ -28,7 +28,9 @@ class SessionInfo:
         
         # Basic session information
         self.sample_id = ""
-        self.sample_name = ""  # Added sample name field
+        self.sample_name = ""  # Sample name field
+        self.client_sample_name = ""  # Added client sample name field
+        self.tcl_id = ""  # Added TCL ID field
         self.sample_type = ""
         self.preparation_method = ""
         self.operator_name = ""
@@ -55,7 +57,9 @@ class SessionInfo:
                 data = json.load(f)
             
             self.sample_id = data.get("sample_id", "")
-            self.sample_name = data.get("sample_name", "")  # Load sample name
+            self.sample_name = data.get("sample_name", "")
+            self.client_sample_name = data.get("client_sample_name", "")  # Load client sample name
+            self.tcl_id = data.get("tcl_id", "")  # Load TCL ID
             self.sample_type = data.get("sample_type", "")
             self.preparation_method = data.get("preparation_method", "")
             self.operator_name = data.get("operator_name", "")
@@ -90,7 +94,9 @@ class SessionInfo:
             # Create data dictionary
             data = {
                 "sample_id": self.sample_id,
-                "sample_name": self.sample_name,  # Save sample name
+                "sample_name": self.sample_name,
+                "client_sample_name": self.client_sample_name,  # Save client sample name
+                "tcl_id": self.tcl_id,  # Save TCL ID
                 "sample_type": self.sample_type,
                 "preparation_method": self.preparation_method,
                 "operator_name": self.operator_name,
@@ -109,20 +115,6 @@ class SessionInfo:
         except Exception as e:
             logger.error(f"Failed to save session info: {str(e)}")
             return False
-    
-    def is_complete(self):
-        """
-        Check if all required session information fields are filled.
-        
-        Returns:
-            bool: True if all required fields are filled, False otherwise
-        """
-        return (
-            self.sample_id and
-            self.sample_type and
-            self.preparation_method and
-            self.operator_name
-        )
     
     def update_field(self, field_name, value):
         """
@@ -151,7 +143,6 @@ class SessionInfo:
         else:
             logger.warning(f"Attempted to update unknown field: {field_name}")
             return False
-
 
 class SessionManager:
     """

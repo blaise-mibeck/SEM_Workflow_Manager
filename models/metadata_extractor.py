@@ -238,7 +238,41 @@ class PhenomXLStrategy(MetadataExtractionStrategy):
                     metadata.additional_params["instrument_type"] = instrument.findtext("type")
                     metadata.additional_params["software_version"] = instrument.findtext("softwareVersion")
                     metadata.additional_params["instrument_id"] = instrument.findtext("uniqueID")
-                    
+                
+                # Extract integrations
+                integrations_element = root.find("integrations")
+                if integrations_element is not None:
+                    metadata.additional_params["integrations"] = int(integrations_element.text)
+                
+                # Extract detector mix factors for mode identification
+                detector_mix = root.find("acquisition/scan/detectorMixFactors")
+                if detector_mix is not None:
+                    metadata.additional_params["detectorMixFactors"] = {
+                        "bsdA": float(detector_mix.find("bsdA").text) if detector_mix.find("bsdA") is not None else 0,
+                        "bsdB": float(detector_mix.find("bsdB").text) if detector_mix.find("bsdB") is not None else 0,
+                        "bsdC": float(detector_mix.find("bsdC").text) if detector_mix.find("bsdC") is not None else 0,
+                        "bsdD": float(detector_mix.find("bsdD").text) if detector_mix.find("bsdD") is not None else 0,
+                        "sed": float(detector_mix.find("sed").text) if detector_mix.find("sed") is not None else 0,
+                        "stem": float(detector_mix.find("stem").text) if detector_mix.find("stem") is not None else 0
+                    }
+
+                # Capture more detailed detector information
+                if metadata.mode == "mix":
+                    # Store detailed detector settings for mix mode (Topo)
+                    detector_info = root.find("acquisition/scan/detectors/QBSD")
+                    if detector_info is not None:
+                        a_state = detector_info.get("A", "0")
+                        b_state = detector_info.get("B", "0")
+                        c_state = detector_info.get("C", "0")
+                        d_state = detector_info.get("D", "0")
+                        
+                        metadata.additional_params["detector_segments"] = {
+                            "A": a_state,
+                            "B": b_state,
+                            "C": c_state,
+                            "D": d_state
+                        }
+                
                 return metadata
                 
         except Exception as e:

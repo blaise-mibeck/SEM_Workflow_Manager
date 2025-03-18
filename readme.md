@@ -6,7 +6,10 @@ A desktop application for organizing, processing, and visualizing Scanning Elect
 
 - Session-based organization of SEM images
 - Automatic metadata extraction from SEM images
-- MagGrid workflow for creating hierarchical magnification visualizations
+- Multiple visualization workflows:
+  - **MagGrid**: Creates hierarchical magnification visualizations
+  - **CompareGrid**: Compares samples across different sessions
+  - **ModeGrid**: Compares the same scene with different imaging modes (SED, BSD, Topo, ChemSEM)
 - Export grids as PNG images with caption files for reports
 
 ## Installation
@@ -50,10 +53,27 @@ python main.py
 1. **Open Session Folder**: Select a folder containing SEM images.
 2. **Enter Session Information**: Provide sample ID, type, preparation method, and operator name.
 3. **Extract Metadata**: Use the Tools menu to extract metadata from images.
-4. **Select Workflow**: Choose the MagGrid workflow for hierarchical visualizations.
-5. **Select Collection**: Choose a discovered collection or refresh to find more.
-6. **Configure Layout**: Adjust the grid layout as needed.
-7. **Export Grid**: Save the visualization for use in reports.
+4. **Select Workflow**: Choose the appropriate workflow for your analysis.
+5. **Configure Layout**: Adjust the grid layout as needed.
+6. **Export Grid**: Save the visualization for use in reports.
+
+## ModeGrid Workflow
+
+The ModeGrid workflow allows you to compare SEM images of the same scene captured with different imaging modes:
+
+- **Secondary Electron (SED)**: Shows surface topography and provides information about surface details.
+- **Backscatter Electron (BSD)**: Provides compositional contrast based on atomic number.
+- **Topographic (Topo)**: Uses BSD detector segments to create shadow effects that enhance surface details from different directions.
+- **ChemSEM**: Chemical imaging mode that provides elemental composition information.
+
+### Using ModeGrid
+
+1. Open a session containing SEM images in different modes
+2. Switch to the "Mode Grid" tab
+3. Click "Discover Collections" to find sets of images with the same scene but different modes
+4. Select a collection and configure the grid layout
+5. Click "Create Grid" to generate the visualization
+6. Export the grid for reports or analysis
 
 ## Project Structure
 
@@ -74,22 +94,90 @@ sem_workflow_manager/
 ├── workflows/                  # Workflow implementations
 │   ├── workflow_base.py        # Base workflow class
 │   ├── mag_grid.py             # MagGrid workflow
+│   ├── compare_grid.py         # CompareGrid workflow
+│   ├── mode_grid.py            # ModeGrid workflow
 │   └── grid_generator.py       # Grid visualization generation
 │
 └── ui/                         # User interface components
     ├── main_window.py          # Main application window
     ├── session_panel.py        # Session information panel
     ├── workflow_panel.py       # Workflow selection panel
-    └── grid_preview.py         # Grid visualization preview
+    ├── grid_preview.py         # Grid visualization preview
+    └── mode_grid_panel.py      # ModeGrid control panel
 ```
 
-## Logging
+## Metadata Fields
 
-Logs are stored in the `logs` directory. Each module logs its own activities, making it easy to track what's happening in the application.
+The application extracts and utilizes the following metadata from SEM images:
+
+### Basic Information
+- **filename**: Name of the image file
+- **databar_label**: Text label from the databar in the image
+- **acquisition_time**: Date and time when the image was acquired
+
+### Image Dimensions
+- **pixels_width**: Width of the image in pixels
+- **pixels_height**: Height of the image in pixels
+- **pixel_dimension_nm**: Size of each pixel in nanometers
+- **field_of_view_width**: Width of the field of view in micrometers
+- **field_of_view_height**: Height of the field of view in micrometers
+- **magnification**: Calculated magnification of the image
+
+### SEM Parameters
+- **mode**: Detector type (SED, BSD, mix, etc.)
+- **high_voltage_kV**: Acceleration voltage in kilovolts
+- **working_distance_mm**: Working distance in millimeters
+- **spot_size**: Beam spot size
+- **dwell_time_ns**: Dwell time in nanoseconds
+- **integrations**: Number of frame averages
+
+### Sample Positioning
+- **sample_position_x**: X-coordinate of sample position in micrometers
+- **sample_position_y**: Y-coordinate of sample position in micrometers
+- **multistage_x**: X-coordinate of multistage position
+- **multistage_y**: Y-coordinate of multistage position
+- **beam_shift_x**: X beam shift
+- **beam_shift_y**: Y beam shift
+
+### Image Adjustments
+- **contrast**: Applied contrast adjustment
+- **brightness**: Applied brightness adjustment
+- **gamma**: Applied gamma correction
+
+### Advanced Parameters
+- **pressure_Pa**: Chamber pressure in pascals
+- **emission_current_uA**: Emission current in microamperes
+- **detector_segments**: For Topo mode - which BSD segments are active
+- **detectorMixFactors**: Mix factors for different detector segments
 
 ## Configuration
 
-Application settings are stored in `config.json`. This includes recent sessions, default paths, and UI preferences.
+Application settings are stored in `config.json`. This includes:
+
+```json
+{
+  "recent_sessions": [],
+  "max_recent_sessions": 10,
+  "default_export_path": "~/Documents",
+  "log_level": "INFO",
+  "template_match_threshold": 0.5,
+  "ui": {
+    "theme": "default",
+    "font_size": 10,
+    "window_size": [1200, 800],
+    "window_position": [100, 100]
+  },
+  "mode_grid": {
+    "scene_match_tolerance": 0.3,
+    "label_font_size": 12,
+    "preferred_modes_order": ["sed", "bsd", "topo", "chemsem", "edx"],
+    "label_mode": true,
+    "label_voltage": true,
+    "label_current": true,
+    "label_integrations": true
+  }
+}
+```
 
 ## License
 

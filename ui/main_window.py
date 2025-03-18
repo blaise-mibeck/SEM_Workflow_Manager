@@ -9,10 +9,12 @@ from utils.logger import Logger
 from models.metadata_extractor import MetadataExtractor
 from workflows.mag_grid import MagGridWorkflow
 from workflows.compare_grid import CompareGridWorkflow
+from workflows.mode_grid import ModeGridWorkflow
 from ui.session_panel import SessionPanel
 from ui.workflow_panel import WorkflowPanel
 from ui.grid_preview import GridPreviewPanel
 from ui.compare_grid_panel import CompareGridPanel
+from ui.mode_grid_panel import ModeGridPanel
 
 logger = Logger(__name__)
 
@@ -39,7 +41,8 @@ class MainWindow(QtWidgets.QMainWindow):
         # Create workflows
         self.workflows = {
             "MagGrid": MagGridWorkflow(self.session_manager),
-            "CompareGrid": CompareGridWorkflow(self.session_manager)
+            "CompareGrid": CompareGridWorkflow(self.session_manager),
+            "ModeGrid": ModeGridWorkflow(self.session_manager)
         }
         
         # Initialize UI components
@@ -90,6 +93,16 @@ class MainWindow(QtWidgets.QMainWindow):
         compare_layout.addWidget(self.compare_grid_panel)
         
         self.left_tabs.addTab(compare_tab, "Compare Grid")
+        
+        # ModeGrid tab
+        mode_tab = QtWidgets.QWidget()
+        mode_layout = QtWidgets.QVBoxLayout(mode_tab)
+        
+        # ModeGrid panel
+        self.mode_grid_panel = ModeGridPanel(self.session_manager)
+        mode_layout.addWidget(self.mode_grid_panel)
+        
+        self.left_tabs.addTab(mode_tab, "Mode Grid")
         
         # Right panel - Grid preview and export
         right_panel = QtWidgets.QWidget()
@@ -150,25 +163,22 @@ class MainWindow(QtWidgets.QMainWindow):
         extract_action.triggered.connect(self._extract_metadata)
         tools_menu.addAction(extract_action)
         
-        # FIXED: Changed method name in connect to match class method name
         # Refresh collections action
         refresh_action = QtWidgets.QAction("&Refresh Collections", self)
-        refresh_action.triggered.connect(self.refresh_collections)  # Removed underscore
+        refresh_action.triggered.connect(self.refresh_collections)
         tools_menu.addAction(refresh_action)
         
         # Compare menu
         compare_menu = menu_bar.addMenu("&Compare")
         
-        # FIXED: Changed method name in connect to match class method name
         # Add sessions action
         add_sessions_action = QtWidgets.QAction("&Add Sessions for Comparison...", self)
-        add_sessions_action.triggered.connect(self.add_comparison_sessions)  # Removed underscore
+        add_sessions_action.triggered.connect(self.add_comparison_sessions)
         compare_menu.addAction(add_sessions_action)
         
-        # FIXED: Changed method name in connect to match class method name
         # Discover comparisons action
         discover_action = QtWidgets.QAction("&Discover Comparisons", self)
-        discover_action.triggered.connect(self.discover_comparisons)  # Removed underscore
+        discover_action.triggered.connect(self.discover_comparisons)
         compare_menu.addAction(discover_action)
         
         # Help menu
@@ -195,6 +205,9 @@ class MainWindow(QtWidgets.QMainWindow):
         
         # Connect CompareGrid panel signals
         self.compare_grid_panel.grid_created.connect(self._on_compare_grid_created)
+        
+        # Connect ModeGrid panel signals
+        self.mode_grid_panel.grid_created.connect(self._on_mode_grid_created)
         
         # Connect tab change signals
         self.left_tabs.currentChanged.connect(self._on_tab_changed)
@@ -367,7 +380,6 @@ class MainWindow(QtWidgets.QMainWindow):
         # Update workflow panel with collections
         self.workflow_panel.update_collections()
     
-    # FIXED: Renamed method to not have underscore prefix
     def refresh_collections(self):
         """Refresh collections for the current workflow."""
         current_tab = self.left_tabs.currentIndex()
@@ -389,7 +401,9 @@ class MainWindow(QtWidgets.QMainWindow):
                         f"Error refreshing collections: {str(e)}"
                     )
         elif current_tab == 1:  # CompareGrid tab
-            self.discover_comparisons()  # Also fixed this call
+            self.discover_comparisons()
+        elif current_tab == 2:  # ModeGrid tab
+            self.mode_grid_panel.discover_collections()
     
     def _show_about(self):
         """Show about dialog."""
@@ -476,6 +490,8 @@ class MainWindow(QtWidgets.QMainWindow):
         
         if collection_type == "CompareGrid":
             workflow = self.workflows["CompareGrid"]
+        elif collection_type == "ModeGrid":
+            workflow = self.workflows["ModeGrid"]
         else:
             # Get the current workflow
             workflow = self.workflow_panel.get_current_workflow()
@@ -502,7 +518,6 @@ class MainWindow(QtWidgets.QMainWindow):
                 f"Error exporting grid: {str(e)}"
             )
     
-    # FIXED: Renamed method to not have underscore prefix
     def add_comparison_sessions(self):
         """Open dialog to add sessions for comparison."""
         self.left_tabs.setCurrentIndex(1)  # Switch to CompareGrid tab
@@ -510,7 +525,6 @@ class MainWindow(QtWidgets.QMainWindow):
         # Forward to CompareGrid panel
         self.compare_grid_panel.add_sessions()
     
-    # FIXED: Renamed method to not have underscore prefix
     def discover_comparisons(self):
         """Discover CompareGrid collections."""
         self.left_tabs.setCurrentIndex(1)  # Switch to CompareGrid tab
@@ -526,6 +540,14 @@ class MainWindow(QtWidgets.QMainWindow):
             # Store the current CompareGrid collection for context menu
             self.current_compare_collection = collection
     
+    def _on_mode_grid_created(self, grid_image, collection):
+        """Handle grid created signal from ModeGrid panel."""
+        if grid_image and collection:
+            self.grid_preview.set_preview(grid_image, collection)
+            
+            # Store the current ModeGrid collection for context menu
+            self.current_mode_collection = collection
+    
     def _on_tab_changed(self, index):
         """Handle tab change events."""
         # Clear the grid preview when switching tabs
@@ -540,9 +562,12 @@ class MainWindow(QtWidgets.QMainWindow):
         if current_tab == 0:  # Standard workflow tab
             if hasattr(self, 'current_collection'):
                 current_collection = self.current_collection
-        else:  # CompareGrid tab
+        elif current_tab == 1:  # CompareGrid tab
             if hasattr(self, 'current_compare_collection'):
                 current_collection = self.current_compare_collection
+        elif current_tab == 2:  # ModeGrid tab
+            if hasattr(self, 'current_mode_collection'):
+                current_collection = self.current_mode_collection
         
         if not current_collection:
             # Try to get it from the preview
@@ -566,6 +591,12 @@ class MainWindow(QtWidgets.QMainWindow):
         # Show alternatives menu based on collection type
         if current_collection.get("type") == "CompareGrid":
             self.compare_grid_panel.show_alternative_menu(
+                self.grid_preview.preview_label,
+                pos,
+                current_collection
+            )
+        elif current_collection.get("type") == "ModeGrid":
+            self.mode_grid_panel.show_alternative_menu(
                 self.grid_preview.preview_label,
                 pos,
                 current_collection

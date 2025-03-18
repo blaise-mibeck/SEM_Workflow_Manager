@@ -261,12 +261,17 @@ class WorkflowBase(ABC):
                     grids_folder = project_folder
             
             # Get session information
+            session_id = "Unknown"
+            tcl_id = ""
+            client_sample_name = ""
+            
             if self.session_manager and self.session_manager.current_session:
-                sample_id = self.session_manager.current_session.sample_id
-                session_folder_name = os.path.basename(self.session_manager.session_folder)
+                session_id = os.path.basename(self.session_manager.session_folder)
+                tcl_id = self.session_manager.current_session.tcl_id or ""
+                client_sample_name = self.session_manager.current_session.client_sample_name or ""
+                sample_id = self.session_manager.current_session.sample_id or "Unknown"
             else:
                 sample_id = "Unknown"
-                session_folder_name = "Session"
             
             # For CompareGrid, customize the export name with sample IDs from all sessions
             if collection.get("type") == "CompareGrid":
@@ -285,20 +290,32 @@ class WorkflowBase(ABC):
                     else:
                         sample_id = "_".join(sample_ids[:3]) + "_etc"
             else:
-                workflow_name = self.__class__.__name__
+                workflow_name = self.__class__.__name__.replace("Workflow", "")
             
             # Add magnification and mode to the filename for better identification
             mag = collection.get("magnification", "")
             mode = collection.get("mode", "")
             
-            # Add timestamp for uniqueness
-            timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+            # Clean up any characters that might be problematic in filenames
+            for char in [':', '*', '?', '"', '<', '>', '|', '/', '\\']:
+                tcl_id = tcl_id.replace(char, '_')
+                client_sample_name = client_sample_name.replace(char, '_')
+                session_id = session_id.replace(char, '_')
             
-            # Generate a unique filename
-            if mag and mode:
-                base_filename = f"{workflow_name}_{mode}_{mag}x_{sample_id}_{timestamp}"
-            else:
-                base_filename = f"{workflow_name}_{sample_id}_{timestamp}"
+            # Format of filename: [sessionID]_[TCLID]_[ClientName]_[collectiontype]-#.png
+            base_filename = f"{session_id}"
+            if tcl_id:
+                base_filename += f"_{tcl_id}"
+            if client_sample_name:
+                base_filename += f"_{client_sample_name}"
+            base_filename += f"_{workflow_name}"
+            
+            # Add collection number counter
+            collection_counter = 1
+            while os.path.exists(os.path.join(grids_folder, f"{base_filename}-{collection_counter}.png")):
+                collection_counter += 1
+            
+            base_filename += f"-{collection_counter}"
             
             image_filename = f"{base_filename}.png"
             caption_filename = f"{base_filename}.txt"
@@ -315,13 +332,13 @@ class WorkflowBase(ABC):
             
             # Create a caption file
             logger.info(f"Saving caption to: {caption_path}")
-            with open(caption_path, 'w') as f:
+            with open(caption_path, 'w', encoding='utf-8') as f:  # Add encoding='utf-8' here
                 f.write(self._generate_caption(collection))
             
             # Convert to serializable format and save the collection data
             logger.info(f"Saving collection data to: {collection_path}")
             serializable_collection = convert_to_serializable(collection)
-            with open(collection_path, 'w') as f:
+            with open(collection_path, 'w', encoding='utf-8') as f:  # Add encoding='utf-8' here
                 json.dump(serializable_collection, f, indent=4)
             
             logger.info(f"Export completed successfully")

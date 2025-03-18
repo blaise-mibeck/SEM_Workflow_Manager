@@ -30,12 +30,21 @@ class Config:
             "max_recent_sessions": 10,
             "default_export_path": os.path.expanduser("~/Documents"),
             "log_level": "INFO",
-            "template_match_threshold": 0.5,
+            "template_match_threshold": 0.1,
             "ui": {
                 "theme": "default",
                 "font_size": 10,
                 "window_size": [1200, 800],
                 "window_position": [100, 100]
+            },
+            "mode_grid": {
+                "scene_match_tolerance": 0.01,
+                "label_font_size": 36,
+                "preferred_modes_order": ["sed", "bsd", "topo", "edx"],
+                "label_mode": True,
+                "label_voltage": True,
+                "label_current": True,
+                "label_integrations": True
             }
         }
         

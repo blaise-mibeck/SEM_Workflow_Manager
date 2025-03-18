@@ -1,0 +1,6 @@
+2025-03-18 12:24:43,231 - __main__ - CRITICAL - Unhandled exception: Traceback (most recent call last):
+  File "c:\Z\_Blaise_Tools\SEM_Workflow_Manager\ui\session_panel.py", line 217, in _save_session_info
+    session.update_field("sample_id", self.sample_id_edit.text())
+    ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SessionInfo' object has no attribute 'update_field'
+

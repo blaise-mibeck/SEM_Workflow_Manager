@@ -67,6 +67,16 @@ class SessionPanel(QtWidgets.QGroupBox):
         self.sample_type_edit.setPlaceholderText("Required")
         form_layout.addRow("Sample Type:", self.sample_type_edit)
         
+        # TCL ID - New field
+        self.tcl_id_edit = QtWidgets.QLineEdit()
+        self.tcl_id_edit.setPlaceholderText("TCL ID Number")
+        form_layout.addRow("TCL ID:", self.tcl_id_edit)
+        
+        # Client Sample Name - New field
+        self.client_sample_name_edit = QtWidgets.QLineEdit()
+        self.client_sample_name_edit.setPlaceholderText("Client's name for the sample")
+        form_layout.addRow("Client Sample Name:", self.client_sample_name_edit)
+        
         # Preparation Method
         self.prep_method_edit = QtWidgets.QLineEdit()
         self.prep_method_edit.setPlaceholderText("Required")
@@ -153,6 +163,8 @@ class SessionPanel(QtWidgets.QGroupBox):
         self.folder_edit.clear()
         self.sample_id_edit.clear()
         self.sample_type_edit.clear()
+        self.tcl_id_edit.clear()  # Clear TCL ID
+        self.client_sample_name_edit.clear()  # Clear Client Sample Name
         self.prep_method_edit.clear()
         self.operator_name_edit.clear()
         self.notes_edit.clear()
@@ -171,6 +183,8 @@ class SessionPanel(QtWidgets.QGroupBox):
         self.folder_edit.setText(session.session_folder)
         self.sample_id_edit.setText(session.sample_id)
         self.sample_type_edit.setText(session.sample_type)
+        self.tcl_id_edit.setText(session.tcl_id)  # Set TCL ID
+        self.client_sample_name_edit.setText(session.client_sample_name)  # Set Client Sample Name
         self.prep_method_edit.setText(session.preparation_method)
         self.operator_name_edit.setText(session.operator_name)
         self.notes_edit.setText(session.notes)
@@ -189,6 +203,8 @@ class SessionPanel(QtWidgets.QGroupBox):
         
         # Validate form
         self._validate_form()
+
+
     
     def _save_session_info(self):
         """Save session information from form to the session object."""
@@ -200,6 +216,8 @@ class SessionPanel(QtWidgets.QGroupBox):
         # Update session object with form values
         session.update_field("sample_id", self.sample_id_edit.text())
         session.update_field("sample_type", self.sample_type_edit.text())
+        session.update_field("tcl_id", self.tcl_id_edit.text())  # Save TCL ID
+        session.update_field("client_sample_name", self.client_sample_name_edit.text())  # Save Client Sample Name
         session.update_field("preparation_method", self.prep_method_edit.text())
         session.update_field("operator_name", self.operator_name_edit.text())
         session.update_field("notes", self.notes_edit.toPlainText())
@@ -218,6 +236,7 @@ class SessionPanel(QtWidgets.QGroupBox):
                 "Save Error",
                 "Failed to save session information."
             )
+
     
     def _reset_session_info(self):
         """Reset form to current session information."""
@@ -256,6 +275,8 @@ class SessionPanel(QtWidgets.QGroupBox):
         """Enable or disable the form fields."""
         self.sample_id_edit.setEnabled(enabled)
         self.sample_type_edit.setEnabled(enabled)
+        self.tcl_id_edit.setEnabled(enabled)  # Enable/disable TCL ID
+        self.client_sample_name_edit.setEnabled(enabled)  # Enable/disable Client Sample Name
         self.prep_method_edit.setEnabled(enabled)
         self.operator_name_edit.setEnabled(enabled)
         self.notes_edit.setEnabled(enabled)
