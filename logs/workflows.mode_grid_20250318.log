@@ -1123,3 +1123,96 @@
 2025-03-18 12:31:26,088 - workflows.mode_grid - INFO - Created ModeGrid visualization with 4 images
 2025-03-18 12:31:31,958 - workflows.mode_grid - INFO - Creating ModeGrid with layout 3x2 for 2 images
 2025-03-18 12:31:31,995 - workflows.mode_grid - INFO - Created ModeGrid visualization with 2 images
+2025-03-18 14:45:25,324 - workflows.mode_grid - INFO - Starting ModeGrid collection discovery with 53/53 valid images
+2025-03-18 14:45:25,325 - workflows.mode_grid - INFO - No manual Collection field found in metadata
+2025-03-18 14:45:25,325 - workflows.mode_grid - INFO - Found the following modes in metadata:
+2025-03-18 14:45:25,326 - workflows.mode_grid - INFO -   - bsd: 38 images
+2025-03-18 14:45:25,326 - workflows.mode_grid - INFO -   - chemsem: 6 images
+2025-03-18 14:45:25,326 - workflows.mode_grid - INFO -   - sed: 3 images
+2025-03-18 14:45:25,327 - workflows.mode_grid - INFO -   - topo: 6 images
+2025-03-18 14:45:25,327 - workflows.mode_grid - INFO - Starting position-based collection discovery
+2025-03-18 14:45:25,327 - workflows.mode_grid - INFO - Found 53 valid images: 47 regular, 6 ChemSEM
+2025-03-18 14:45:25,328 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_10
+2025-03-18 14:45:25,328 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_12
+2025-03-18 14:45:25,328 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_18
+2025-03-18 14:45:25,329 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_25
+2025-03-18 14:45:25,329 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_31
+2025-03-18 14:45:25,329 - workflows.mode_grid - INFO - Matched ChemSEM image to regular image: SEM1-436_33
+2025-03-18 14:45:25,329 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.000342155_0.0141753
+2025-03-18 14:45:25,330 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.000342155_0.0141753
+2025-03-18 14:45:25,330 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.00111016_0.0148667
+2025-03-18 14:45:25,330 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.00236123_0.0154065
+2025-03-18 14:45:25,331 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.00236599_0.0154019
+2025-03-18 14:45:25,331 - workflows.mode_grid - INFO - Added ChemSEM image to position group -0.00233817_0.0153873
+2025-03-18 14:45:25,331 - workflows.mode_grid - INFO - Created 23 position groups for collection discovery
+2025-03-18 14:45:25,332 - workflows.mode_grid - INFO - Position group -0.000346025_0.0141721: 4 images, 1 unique modes
+2025-03-18 14:45:25,332 - workflows.mode_grid - INFO - Position group -0.000342155_0.0141753: 9 images, 4 unique modes
+2025-03-18 14:45:25,332 - workflows.mode_grid - INFO - Position group -0.00111016_0.0148667: 6 images, 4 unique modes
+2025-03-18 14:45:25,333 - workflows.mode_grid - INFO - Position group -0.00209508_0.0154477: 3 images, 1 unique modes
+2025-03-18 14:45:25,333 - workflows.mode_grid - INFO - Position group -0.00210192_0.0154493: 1 images, 1 unique modes
+2025-03-18 14:45:25,333 - workflows.mode_grid - INFO - Position group -0.00236123_0.0154065: 3 images, 2 unique modes
+2025-03-18 14:45:25,334 - workflows.mode_grid - INFO - Position group -0.00236321_0.0153982: 1 images, 1 unique modes
+2025-03-18 14:45:25,334 - workflows.mode_grid - INFO - Position group -0.00236281_0.0153956: 2 images, 1 unique modes
+2025-03-18 14:45:25,334 - workflows.mode_grid - INFO - Position group -0.00236599_0.0154019: 3 images, 2 unique modes
+2025-03-18 14:45:25,335 - workflows.mode_grid - INFO - Position group -0.00233817_0.0153873: 4 images, 3 unique modes
+2025-03-18 14:45:25,335 - workflows.mode_grid - INFO - Position group -0.00267333_0.0156445: 1 images, 1 unique modes
+2025-03-18 14:45:25,336 - workflows.mode_grid - INFO - Position group -0.0027408_0.0156759: 1 images, 1 unique modes
+2025-03-18 14:45:25,336 - workflows.mode_grid - INFO - Position group -0.00266566_0.0157168: 1 images, 1 unique modes
+2025-03-18 14:45:25,336 - workflows.mode_grid - INFO - Position group -0.00276872_0.0157304: 1 images, 1 unique modes
+2025-03-18 14:45:25,337 - workflows.mode_grid - INFO - Position group -0.00281383_0.0157581: 1 images, 1 unique modes
+2025-03-18 14:45:25,337 - workflows.mode_grid - INFO - Position group -0.00281709_0.015758: 5 images, 2 unique modes
+2025-03-18 14:45:25,337 - workflows.mode_grid - INFO - Position group -0.00229409_0.0188111: 1 images, 1 unique modes
+2025-03-18 14:45:25,338 - workflows.mode_grid - INFO - Position group -0.00166035_0.0157928: 1 images, 1 unique modes
+2025-03-18 14:45:25,338 - workflows.mode_grid - INFO - Position group 0.00324745_0.0126033: 1 images, 1 unique modes
+2025-03-18 14:45:25,338 - workflows.mode_grid - INFO - Position group -0.00210933_0.01245: 1 images, 1 unique modes
+2025-03-18 14:45:25,338 - workflows.mode_grid - INFO - Position group 0.00266064_0.0170127: 1 images, 1 unique modes
+2025-03-18 14:45:25,339 - workflows.mode_grid - INFO - Position group 0.000272563_0.0187602: 1 images, 1 unique modes
+2025-03-18 14:45:25,339 - workflows.mode_grid - INFO - Position group -0.00277061_0.0159007: 1 images, 1 unique modes
+2025-03-18 14:45:25,339 - workflows.mode_grid - INFO - Position -0.000346025_0.0141721 has these modes: bsd(4)
+2025-03-18 14:45:25,340 - workflows.mode_grid - INFO - Skipping position -0.000346025_0.0141721 - only has 1 unique modes
+2025-03-18 14:45:25,340 - workflows.mode_grid - INFO - Position -0.000342155_0.0141753 has these modes: bsd(4), sed(1), topo(2), chemsem(2)
+2025-03-18 14:45:25,344 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.000342155_0.0141753 with 4 images
+2025-03-18 14:45:25,345 - workflows.mode_grid - INFO - Position -0.00111016_0.0148667 has these modes: bsd(2), sed(1), topo(2), chemsem(1)
+2025-03-18 14:45:25,348 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.00111016_0.0148667 with 4 images
+2025-03-18 14:45:25,348 - workflows.mode_grid - INFO - Position -0.00209508_0.0154477 has these modes: bsd(3)
+2025-03-18 14:45:25,348 - workflows.mode_grid - INFO - Skipping position -0.00209508_0.0154477 - only has 1 unique modes
+2025-03-18 14:45:25,348 - workflows.mode_grid - INFO - Skipping position group -0.00210192_0.0154493 - only 1 images
+2025-03-18 14:45:25,348 - workflows.mode_grid - INFO - Position -0.00236123_0.0154065 has these modes: bsd(2), chemsem(1)
+2025-03-18 14:45:25,351 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.00236123_0.0154065 with 2 images
+2025-03-18 14:45:25,351 - workflows.mode_grid - INFO - Skipping position group -0.00236321_0.0153982 - only 1 images
+2025-03-18 14:45:25,351 - workflows.mode_grid - INFO - Position -0.00236281_0.0153956 has these modes: bsd(2)
+2025-03-18 14:45:25,352 - workflows.mode_grid - INFO - Skipping position -0.00236281_0.0153956 - only has 1 unique modes
+2025-03-18 14:45:25,352 - workflows.mode_grid - INFO - Position -0.00236599_0.0154019 has these modes: bsd(2), chemsem(1)
+2025-03-18 14:45:25,354 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.00236599_0.0154019 with 2 images
+2025-03-18 14:45:25,354 - workflows.mode_grid - INFO - Position -0.00233817_0.0153873 has these modes: bsd(1), topo(2), chemsem(1)
+2025-03-18 14:45:25,357 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.00233817_0.0153873 with 3 images
+2025-03-18 14:45:25,357 - workflows.mode_grid - INFO - Skipping position group -0.00267333_0.0156445 - only 1 images
+2025-03-18 14:45:25,357 - workflows.mode_grid - INFO - Skipping position group -0.0027408_0.0156759 - only 1 images
+2025-03-18 14:45:25,358 - workflows.mode_grid - INFO - Skipping position group -0.00266566_0.0157168 - only 1 images
+2025-03-18 14:45:25,358 - workflows.mode_grid - INFO - Skipping position group -0.00276872_0.0157304 - only 1 images
+2025-03-18 14:45:25,358 - workflows.mode_grid - INFO - Skipping position group -0.00281383_0.0157581 - only 1 images
+2025-03-18 14:45:25,358 - workflows.mode_grid - INFO - Position -0.00281709_0.015758 has these modes: bsd(4), sed(1)
+2025-03-18 14:45:25,361 - workflows.mode_grid - INFO - Created ModeGrid collection at position -0.00281709_0.015758 with 2 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group -0.00229409_0.0188111 - only 1 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group -0.00166035_0.0157928 - only 1 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group 0.00324745_0.0126033 - only 1 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group -0.00210933_0.01245 - only 1 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group 0.00266064_0.0170127 - only 1 images
+2025-03-18 14:45:25,362 - workflows.mode_grid - INFO - Skipping position group 0.000272563_0.0187602 - only 1 images
+2025-03-18 14:45:25,363 - workflows.mode_grid - INFO - Skipping position group -0.00277061_0.0159007 - only 1 images
+2025-03-18 14:45:25,363 - workflows.mode_grid - INFO - Created 6 collections from position-based grouping
+2025-03-18 14:45:25,363 - workflows.mode_grid - INFO - Total discovered ModeGrid collections: 6
+2025-03-18 14:45:29,626 - workflows.mode_grid - INFO - Creating ModeGrid with layout 2x2 for 4 images
+2025-03-18 14:45:29,784 - workflows.mode_grid - INFO - Created ModeGrid visualization with 4 images
+2025-03-18 14:45:38,764 - workflows.mode_grid - INFO - Creating ModeGrid with layout 2x2 for 4 images
+2025-03-18 14:45:38,871 - workflows.mode_grid - INFO - Created ModeGrid visualization with 4 images
+2025-03-18 14:45:48,317 - workflows.mode_grid - INFO - Creating ModeGrid with layout 1x2 for 2 images
+2025-03-18 14:45:48,381 - workflows.mode_grid - INFO - Created ModeGrid visualization with 2 images
+2025-03-18 14:45:51,588 - workflows.mode_grid - INFO - Creating ModeGrid with layout 1x2 for 2 images
+2025-03-18 14:45:51,652 - workflows.mode_grid - INFO - Created ModeGrid visualization with 2 images
+2025-03-18 14:45:54,282 - workflows.mode_grid - INFO - Creating ModeGrid with layout 2x2 for 3 images
+2025-03-18 14:45:54,356 - workflows.mode_grid - INFO - Created ModeGrid visualization with 3 images
+2025-03-18 14:47:52,301 - workflows.mode_grid - INFO - Creating ModeGrid with layout 1x2 for 2 images
+2025-03-18 14:47:52,359 - workflows.mode_grid - INFO - Created ModeGrid visualization with 2 images
+2025-03-18 14:48:32,488 - workflows.mode_grid - INFO - Creating ModeGrid with layout 2x1 for 2 images
+2025-03-18 14:48:32,546 - workflows.mode_grid - INFO - Created ModeGrid visualization with 2 images

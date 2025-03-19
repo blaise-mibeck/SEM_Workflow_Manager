@@ -158,3 +158,31 @@
 2025-03-18 12:32:48,348 - ui.main_window - INFO - Collection selected signal received: a4ad6d25-7296-419c-8e25-1f5e4d1d0aea
 2025-03-18 12:32:51,026 - ui.main_window - INFO - Collection selected signal received: bda94d27-9720-4b38-ad7b-981ce2b27d1b
 2025-03-18 12:32:55,114 - ui.main_window - INFO - Export requested signal received: bda94d27-9720-4b38-ad7b-981ce2b27d1b
+2025-03-18 14:43:30,252 - ui.main_window - INFO - Main window initialized
+2025-03-18 14:43:49,498 - ui.main_window - INFO - Session opened signal received: C:/Z/_Blaise_Tools/_Notes/SEM1-436
+2025-03-18 14:46:15,871 - ui.main_window - INFO - Collection selected signal received: 719f7792-e7de-4398-a2fb-f124ff6ecd20
+2025-03-18 14:46:20,635 - ui.main_window - INFO - Create grid requested signal received: 719f7792-e7de-4398-a2fb-f124ff6ecd20
+2025-03-18 14:46:23,287 - ui.main_window - INFO - Collection selected signal received: 9877eb8b-9ed2-4cc8-a532-ab85a09f775a
+2025-03-18 14:46:24,000 - ui.main_window - INFO - Collection selected signal received: a5f3962f-8b7b-4313-a6f0-e76f927e9063
+2025-03-18 14:46:25,377 - ui.main_window - INFO - Collection selected signal received: d67d3b95-75c9-45f6-83bb-580e8d2f5005
+2025-03-18 14:46:26,488 - ui.main_window - INFO - Collection selected signal received: 9877eb8b-9ed2-4cc8-a532-ab85a09f775a
+2025-03-18 14:46:33,513 - ui.main_window - INFO - Collection selected signal received: 5e677e58-266c-4871-99ac-4f3fcf1e21e0
+2025-03-18 14:46:34,194 - ui.main_window - INFO - Collection selected signal received: e1cfac8f-0712-4732-a5dd-6e3675f758a2
+2025-03-18 14:46:35,384 - ui.main_window - INFO - Collection selected signal received: a765ed7a-3e6e-48af-ac6d-d64e09c609bc
+2025-03-18 14:46:36,017 - ui.main_window - INFO - Collection selected signal received: 223b48a1-c5ac-4500-b2da-25e1f5596940
+2025-03-18 14:46:38,490 - ui.main_window - INFO - Collection selected signal received: b3c60c50-4c4d-4041-91bb-6417e96bb74d
+2025-03-18 14:46:39,835 - ui.main_window - INFO - Collection selected signal received: 3f4ccc2e-52dc-4308-93b8-b31ab3d78b3e
+2025-03-18 14:46:40,477 - ui.main_window - INFO - Collection selected signal received: f6923027-3a64-403e-b3e3-8642a089b36e
+2025-03-18 14:47:32,616 - ui.main_window - INFO - Collection selected signal received: a765ed7a-3e6e-48af-ac6d-d64e09c609bc
+2025-03-18 14:47:33,305 - ui.main_window - INFO - Collection selected signal received: b57f7a06-57e2-4799-9283-18ddcf02dd3c
+2025-03-18 14:47:34,839 - ui.main_window - INFO - Collection selected signal received: d173310e-603e-4c06-9f6b-4494aa899da4
+2025-03-18 14:47:38,093 - ui.main_window - INFO - Collection selected signal received: b57f7a06-57e2-4799-9283-18ddcf02dd3c
+2025-03-18 14:47:39,306 - ui.main_window - INFO - Collection selected signal received: 486e4bcf-3dde-4b99-afff-98bd61b88f1e
+2025-03-18 14:47:39,948 - ui.main_window - INFO - Collection selected signal received: 612c1d29-9fc4-4800-8409-2c6d91bc2240
+2025-03-18 14:47:41,324 - ui.main_window - INFO - Collection selected signal received: a5f3962f-8b7b-4313-a6f0-e76f927e9063
+2025-03-18 14:47:42,701 - ui.main_window - INFO - Collection selected signal received: 0c987e47-f9cf-4e4f-956b-899b3979c5af
+2025-03-18 14:47:45,039 - ui.main_window - INFO - Collection selected signal received: d67d3b95-75c9-45f6-83bb-580e8d2f5005
+2025-03-18 14:47:45,611 - ui.main_window - INFO - Collection selected signal received: 5e677e58-266c-4871-99ac-4f3fcf1e21e0
+2025-03-18 14:47:46,824 - ui.main_window - INFO - Collection selected signal received: e1cfac8f-0712-4732-a5dd-6e3675f758a2
+2025-03-18 14:47:48,224 - ui.main_window - INFO - Collection selected signal received: 719f7792-e7de-4398-a2fb-f124ff6ecd20
+2025-03-18 14:48:38,921 - ui.main_window - INFO - Export requested signal received: mode_grid_-0.00236599_0.0154019

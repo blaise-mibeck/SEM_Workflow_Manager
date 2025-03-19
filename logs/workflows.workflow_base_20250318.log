@@ -461,3 +461,44 @@ UnicodeEncodeError: 'charmap' codec can't encode character '\u03bc' in position 
 2025-03-18 12:32:55,692 - workflows.workflow_base - INFO - Saving caption to: C:/Z/_Blaise_Tools/_Notes\Grids\SEM1-436_MagGrid-6.txt
 2025-03-18 12:32:55,694 - workflows.workflow_base - INFO - Saving collection data to: C:/Z/_Blaise_Tools/_Notes\Grids\SEM1-436_MagGrid-6.json
 2025-03-18 12:32:55,696 - workflows.workflow_base - INFO - Export completed successfully
+2025-03-18 14:45:25,344 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.000342155_0.0141753.json
+2025-03-18 14:45:25,348 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.00111016_0.0148667.json
+2025-03-18 14:45:25,351 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.00236123_0.0154065.json
+2025-03-18 14:45:25,354 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.00236599_0.0154019.json
+2025-03-18 14:45:25,357 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.00233817_0.0153873.json
+2025-03-18 14:45:25,361 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\ModeGridWorkflow\collection_mode_grid_-0.00281709_0.015758.json
+2025-03-18 14:46:06,120 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_719f7792-e7de-4398-a2fb-f124ff6ecd20.json
+2025-03-18 14:46:06,487 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_0c987e47-f9cf-4e4f-956b-899b3979c5af.json
+2025-03-18 14:46:06,787 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_a5f3962f-8b7b-4313-a6f0-e76f927e9063.json
+2025-03-18 14:46:06,997 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_9877eb8b-9ed2-4cc8-a532-ab85a09f775a.json
+2025-03-18 14:46:07,175 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_d67d3b95-75c9-45f6-83bb-580e8d2f5005.json
+2025-03-18 14:46:07,288 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_5e677e58-266c-4871-99ac-4f3fcf1e21e0.json
+2025-03-18 14:46:07,346 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_e1cfac8f-0712-4732-a5dd-6e3675f758a2.json
+2025-03-18 14:46:07,781 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_1df3a625-9133-4788-a2ea-d2d6e5ae5857.json
+2025-03-18 14:46:08,377 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_cf0018ce-8821-41b4-aeed-0cc86fa348b6.json
+2025-03-18 14:46:08,849 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_23d9ed0f-092f-4e18-9ed9-304fa9717379.json
+2025-03-18 14:46:09,320 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_cc277efe-12dd-4422-84ba-9e1f6721daa9.json
+2025-03-18 14:46:09,787 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_1a6fe825-0f81-424f-abf0-86a943dd1af8.json
+2025-03-18 14:46:10,241 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_612c1d29-9fc4-4800-8409-2c6d91bc2240.json
+2025-03-18 14:46:10,699 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_486e4bcf-3dde-4b99-afff-98bd61b88f1e.json
+2025-03-18 14:46:11,163 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_b57f7a06-57e2-4799-9283-18ddcf02dd3c.json
+2025-03-18 14:46:11,617 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_d173310e-603e-4c06-9f6b-4494aa899da4.json
+2025-03-18 14:46:12,055 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_a765ed7a-3e6e-48af-ac6d-d64e09c609bc.json
+2025-03-18 14:46:12,376 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_223b48a1-c5ac-4500-b2da-25e1f5596940.json
+2025-03-18 14:46:12,706 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_2961b6d9-7426-459a-95b2-d0a026559d0f.json
+2025-03-18 14:46:12,967 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_e5b10e23-b082-4fb4-ab7d-0bbc2c93872b.json
+2025-03-18 14:46:13,161 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_c308e116-5258-4c96-8bd4-431ae28a6caf.json
+2025-03-18 14:46:13,307 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_223bb1cc-ad24-4a2e-b74d-ead47cb5fe8b.json
+2025-03-18 14:46:13,379 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_b7d18d5c-0e6d-40fa-9834-3aa6ac5744a2.json
+2025-03-18 14:46:13,939 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_b3c60c50-4c4d-4041-91bb-6417e96bb74d.json
+2025-03-18 14:46:14,009 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_e99f4e37-edb1-46df-91eb-9aa87ca6195a.json
+2025-03-18 14:46:14,077 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_679dd8f6-09f2-4da8-9886-603dd04506dc.json
+2025-03-18 14:46:14,146 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_f9a0d321-5a79-46bb-a8a5-1d53208fc4f5.json
+2025-03-18 14:46:14,217 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_3f4ccc2e-52dc-4308-93b8-b31ab3d78b3e.json
+2025-03-18 14:46:14,302 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_f6923027-3a64-403e-b3e3-8642a089b36e.json
+2025-03-18 14:46:14,385 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_b1029533-aa50-44c2-be74-0c13b66481a9.json
+2025-03-18 14:46:14,453 - workflows.workflow_base - INFO - Saved collection: C:/Z/_Blaise_Tools/_Notes/SEM1-436\MagGridWorkflow\collection_494467f7-ee81-4913-a28a-6d08d0a542c7.json
+2025-03-18 14:48:38,922 - workflows.workflow_base - INFO - Saving grid image to: C:/Z/_Blaise_Tools/_Notes\Grids\SEM1-436_ModeGrid-6.png
+2025-03-18 14:48:39,193 - workflows.workflow_base - INFO - Saving caption to: C:/Z/_Blaise_Tools/_Notes\Grids\SEM1-436_ModeGrid-6.txt
+2025-03-18 14:48:39,195 - workflows.workflow_base - INFO - Saving collection data to: C:/Z/_Blaise_Tools/_Notes\Grids\SEM1-436_ModeGrid-6.json
+2025-03-18 14:48:39,197 - workflows.workflow_base - INFO - Export completed successfully
