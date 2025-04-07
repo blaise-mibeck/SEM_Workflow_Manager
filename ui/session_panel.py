@@ -61,7 +61,7 @@ class SessionPanel(QtWidgets.QGroupBox):
         session_type_layout.addWidget(session_type_label)
         
         self.session_type_combo = QtWidgets.QComboBox()
-        self.session_type_combo.addItems(["EDX", "SEM", "EBSD", "Other"])
+        self.session_type_combo.addItems(["EDX", "SEM"])
         session_type_layout.addWidget(self.session_type_combo)
         
         layout.addLayout(session_type_layout)
