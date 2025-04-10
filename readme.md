@@ -59,18 +59,20 @@ python main.py
 
 ## Session Information
 
-The application organizes images into sessions, with each session having the following information:
+The application organizes images into sessions, with each session having the following information compatible with SEM_Session_Manager:
 
 ### Session Fields
 
-- **Sample ID**: Identifier used internally to identify the sample being imaged. This is the primary identifier used within the application.
+- **Session Type**: Type of imaging session (EDX, SEM, EBSD, etc.)
 
-- **TCL ID**: ID assigned by TCL to the original as-received sample. This may or may not be the same as the Sample ID, and is used for tracking samples through the lab system.
+- **Project Number**: Assigned project number for this work.
 
-- **Client Sample Name**: Name or lot number assigned by the client. This is most meaningful to the client and may be how the sample is discussed in reports.
+- **TCL Sample ID**: ID assigned by TCL to the original as-received sample. This is used for tracking samples through the lab system.
+
+- **Client Sample ID**: Name or lot number assigned by the client. This is most meaningful to the client and may be how the sample is discussed in reports.
 
 - **Sample Type**: A description of the physical form of the sample, such as:
-  - Dry powder
+  - Fine powder
   - Paste
   - Solid
   - Small part
@@ -78,6 +80,14 @@ The application organizes images into sessions, with each session having the fol
   - Film
   - Granule
   - etc.
+
+- **Electrically Conductive**: Whether the sample is naturally electrically conductive.
+
+- **Stub Type**: The type of sample stub used, such as:
+  - Standard 12.5mm
+  - Large 25mm
+  - Custom
+  - Other
 
 - **Preparation Method**: The method used to prepare the sample for SEM imaging, such as:
   - Flick
@@ -89,9 +99,19 @@ The application organizes images into sessions, with each session having the fol
   - Sputter coated
   - etc.
 
+- **Gold Coating Thickness**: Thickness of gold coating in nanometers (if applicable).
+
+- **Vacuum Drying Time**: Duration of vacuum drying prior to imaging (if applicable).
+
+- **Stage Position**: Position number on the sample stage.
+
 - **Operator Name**: The name of the person who operated the SEM for this session.
 
 - **Notes**: Additional information about the session, sample, or imaging conditions.
+
+### Compatibility with SEM_Session_Manager
+
+This application is fully compatible with session information saved by SEM_Session_Manager. Sessions created with either application can be opened, viewed, and modified by the other. The session information is stored in a standard JSON format in the session folder, making it easy to share data between the two applications.
 
 These fields help organize and categorize the SEM images, making it easier to find and compare samples across sessions.
 

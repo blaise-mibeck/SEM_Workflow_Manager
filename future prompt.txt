@@ -1,0 +1,101 @@
+# SEM_Workflow_Manager - Future Development Notes
+
+## Recent Changes - SEM_Session_Manager Compatibility
+
+We have updated SEM_Workflow_Manager to be fully compatible with SEM_Session_Manager's session information format. The following changes were made:
+
+1. Enhanced the `SessionInfo` class in models/session.py to:
+   - Support loading and saving session information in SEM_Session_Manager's JSON format
+   - Add new fields from SEM_Session_Manager (session_type, project_number, stub_type, etc.)
+   - Map field names to match SEM_Session_Manager conventions (tcl_id -> tcl_sample_id, client_sample_name -> client_sample_id)
+   - Add support for session status (active/inactive) and timing information (creation_time, start_time, end_time, total_time_seconds)
+   - Maintain backward compatibility with existing SEM_Workflow_Manager sessions
+
+2. Redesigned the `SessionPanel` UI in ui/session_panel.py to:
+   - Organize fields into tabbed sections (Sample Info, Preparation, Additional Info)
+   - Add UI elements for all SEM_Session_Manager fields
+   - Enhance validation and form controls
+   - Display session status and timing information in the statistics section
+
+3. Updated documentation in readme.md to explain the compatibility with SEM_Session_Manager.
+
+## Field Mapping Reference
+
+For reference, here's the mapping between field names in both systems:
+
+| SEM_Session_Manager      | SEM_Workflow_Manager (Old) | SEM_Workflow_Manager (New) |
+|--------------------------|----------------------------|----------------------------|
+| session_type             | N/A                        | session_type               |
+| operator_name            | operator_name              | operator_name              |
+| project_number           | N/A                        | project_number             |
+| tcl_sample_id            | tcl_id                     | tcl_sample_id              |
+| client_sample_id         | client_sample_name         | client_sample_id           |
+| sample_type              | sample_type                | sample_type                |
+| stub_type                | N/A                        | stub_type                  |
+| electrically_conductive  | N/A                        | electrically_conductive    |
+| preparation_method       | preparation_method         | preparation_method         |
+| gold_coating_thickness   | N/A                        | gold_coating_thickness     |
+| vacuum_drying_time       | N/A                        | vacuum_drying_time         |
+| stage_position           | N/A                        | stage_position             |
+| creation_time            | creation_date              | creation_time              |
+| start_time               | N/A                        | start_time                 |
+| end_time                 | N/A                        | end_time                   |
+| total_time_seconds       | N/A                        | total_time_seconds         |
+| is_active                | N/A                        | is_active                  |
+| session_folder           | session_folder             | session_folder             |
+| N/A                      | sample_id                  | sample_id (legacy support) |
+| N/A                      | sample_name                | sample_name (legacy support)|
+| N/A                      | notes                      | notes                      |
+| N/A                      | history                    | history                    |
+
+## Integration Architecture
+
+The integration between the two applications works as follows:
+
+1. Both applications use the same session_info.json file format
+2. SEM_Session_Manager creates a .json file and session summary text file when starting/stopping a session
+3. SEM_Workflow_Manager can open these sessions, modify them, and save them in a format that SEM_Session_Manager can read
+4. The session_info.json file serves as the common data exchange format
+
+## Future Improvement Ideas
+
+1. **Session Creation Integration**
+   - Add ability to create new sessions directly in SEM_Workflow_Manager using the same naming conventions
+   - Implement automatic folder naming based on session type and incrementing counter (e.g., "EDX1-018")
+
+2. **Enhanced Session Summary**
+   - Generate .txt summary files compatible with SEM_Session_Manager's format
+   - Support saving summary files when sessions are modified or created
+
+3. **Session Import/Export**
+   - Batch import sessions from SEM_Session_Manager's archive
+   - Export collections of sessions with metadata for backup or transfer
+
+4. **Session Timing Controls**
+   - Add UI controls to start/stop/pause sessions 
+   - Track active vs. inactive state and duration
+
+5. **Auto-Detection**
+   - Monitor for new SEM_Session_Manager sessions and prompt to open them
+   - Integrate with SEM_Session_Manager's file watch functionality if available
+
+6. **Report Generation**
+   - Generate reports that combine SEM_Session_Manager session info with grid visualizations
+   - Create PDF reports that include session summary with representative images
+
+7. **Metadata Integration**
+   - Link SEM_Session_Manager's session fields with image metadata
+   - Propagate relevant session fields to image metadata for searching/filtering
+
+8. **User Profile Support**
+   - Remember common values for operator, preparation methods, etc.
+   - Fast presets for common session types and sample configurations
+
+## Development Notes
+
+- Both applications should maintain their independence while sharing data
+- Changes to the session_info.json format should be backward compatible
+- Testing should include session interchange between both applications
+- Consider creating a shared library for session manipulation functions
+
+This integration enhances the workflow by allowing session management to be handled by SEM_Session_Manager while visualization and analysis are handled by SEM_Workflow_Manager, creating a complete end-to-end solution.

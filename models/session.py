@@ -27,14 +27,30 @@ class SessionInfo:
         self.info_file = os.path.join(session_folder, "session_info.json")
         
         # Basic session information
+        self.session_type = "EDX"  # Default session type
         self.sample_id = ""
         self.sample_name = ""  # Sample name field
-        self.client_sample_name = ""  # Added client sample name field
-        self.tcl_id = ""  # Added TCL ID field
+        self.client_sample_id = ""  # Changed from client_sample_name to match SEM_Session_Manager
+        self.tcl_sample_id = ""  # Changed from tcl_id to match SEM_Session_Manager
+        self.project_number = ""  # Added project number
         self.sample_type = ""
+        self.stub_type = "Standard 12.5mm"  # Default stub type
+        self.electrically_conductive = False  # Added conductive property
         self.preparation_method = ""
+        self.gold_coating_thickness = ""  # Added coating thickness
+        self.vacuum_drying_time = ""  # Added vacuum drying time
+        self.stage_position = ""  # Added stage position
         self.operator_name = ""
         self.notes = ""
+        
+        # Timestamps (in ISO format to match SEM_Session_Manager)
+        self.creation_time = datetime.datetime.now().isoformat()
+        self.start_time = ""
+        self.end_time = ""
+        self.total_time_seconds = 0
+        self.is_active = False
+        
+        # For backward compatibility
         self.creation_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.last_modified = self.creation_date
         self.history = []
@@ -56,17 +72,71 @@ class SessionInfo:
             with open(self.info_file, 'r') as f:
                 data = json.load(f)
             
-            self.sample_id = data.get("sample_id", "")
-            self.sample_name = data.get("sample_name", "")
-            self.client_sample_name = data.get("client_sample_name", "")  # Load client sample name
-            self.tcl_id = data.get("tcl_id", "")  # Load TCL ID
-            self.sample_type = data.get("sample_type", "")
-            self.preparation_method = data.get("preparation_method", "")
-            self.operator_name = data.get("operator_name", "")
-            self.notes = data.get("notes", "")
-            self.creation_date = data.get("creation_date", self.creation_date)
-            self.last_modified = data.get("last_modified", self.last_modified)
-            self.history = data.get("history", [])
+            # Check if this is a SEM_Session_Manager format file
+            if "session_type" in data and "tcl_sample_id" in data:
+                # Load fields using SEM_Session_Manager format
+                self.session_type = data.get("session_type", "EDX")
+                self.sample_id = data.get("client_sample_id", "")  # Map to appropriate field
+                self.sample_name = data.get("client_sample_id", "")  # For backward compatibility
+                self.client_sample_id = data.get("client_sample_id", "")
+                self.tcl_sample_id = data.get("tcl_sample_id", "")
+                self.project_number = data.get("project_number", "")
+                self.sample_type = data.get("sample_type", "")
+                self.stub_type = data.get("stub_type", "Standard 12.5mm")
+                self.electrically_conductive = data.get("electrically_conductive", False)
+                self.preparation_method = data.get("preparation_method", "")
+                self.gold_coating_thickness = data.get("gold_coating_thickness", "")
+                self.vacuum_drying_time = data.get("vacuum_drying_time", "")
+                self.stage_position = data.get("stage_position", "")
+                self.operator_name = data.get("operator_name", "")
+                
+                # Handle timestamps
+                self.creation_time = data.get("creation_time", self.creation_time)
+                self.start_time = data.get("start_time", "")
+                self.end_time = data.get("end_time", "")
+                self.total_time_seconds = data.get("total_time_seconds", 0)
+                self.is_active = data.get("is_active", False)
+                
+                # Set backward compatible fields
+                creation_dt = datetime.datetime.fromisoformat(self.creation_time.replace('Z', '+00:00'))
+                self.creation_date = creation_dt.strftime("%Y-%m-%d %H:%M:%S")
+                self.last_modified = self.creation_date
+                self.notes = data.get("notes", "")  # Notes might not be in SEM_Session_Manager format
+                self.history = []  # Reset history for clean start
+            else:
+                # Load using original SEM_Workflow_Manager format
+                self.sample_id = data.get("sample_id", "")
+                self.sample_name = data.get("sample_name", "")
+                
+                # Map old field names to new ones if present
+                self.client_sample_id = data.get("client_sample_name", "")
+                self.tcl_sample_id = data.get("tcl_id", "")
+                
+                # Load fields from original format
+                self.sample_type = data.get("sample_type", "")
+                self.preparation_method = data.get("preparation_method", "")
+                self.operator_name = data.get("operator_name", "")
+                self.notes = data.get("notes", "")
+                self.creation_date = data.get("creation_date", self.creation_date)
+                self.last_modified = data.get("last_modified", self.last_modified)
+                self.history = data.get("history", [])
+                
+                # Set new fields with defaults
+                self.session_type = "EDX"
+                self.project_number = ""
+                self.stub_type = "Standard 12.5mm"
+                self.electrically_conductive = False
+                self.gold_coating_thickness = ""
+                self.vacuum_drying_time = ""
+                self.stage_position = ""
+                
+                # Set timestamps to be compatible with new format
+                creation_dt = datetime.datetime.strptime(self.creation_date, "%Y-%m-%d %H:%M:%S")
+                self.creation_time = creation_dt.isoformat()
+                self.start_time = self.creation_time
+                self.end_time = ""
+                self.total_time_seconds = 0
+                self.is_active = False
             
             logger.info(f"Loaded session info: {self.info_file}")
             return True
@@ -82,24 +152,39 @@ class SessionInfo:
             bool: True if successful, False otherwise
         """
         try:
-            # Update last modified timestamp
+            # Update last modified timestamp (for backward compatibility)
             self.last_modified = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
-            # Record change in history
+            # Record change in history (for backward compatibility)
             self.history.append({
                 "timestamp": self.last_modified,
                 "action": "Session information updated"
             })
             
-            # Create data dictionary
+            # Create data dictionary compatible with SEM_Session_Manager
             data = {
+                "session_type": self.session_type,
+                "operator_name": self.operator_name,
+                "project_number": self.project_number,
+                "tcl_sample_id": self.tcl_sample_id,
+                "client_sample_id": self.client_sample_id,
+                "sample_type": self.sample_type,
+                "stub_type": self.stub_type,
+                "electrically_conductive": self.electrically_conductive,
+                "preparation_method": self.preparation_method,
+                "gold_coating_thickness": self.gold_coating_thickness,
+                "vacuum_drying_time": self.vacuum_drying_time,
+                "stage_position": self.stage_position,
+                "creation_time": self.creation_time,
+                "start_time": self.start_time if self.start_time else self.creation_time,
+                "end_time": self.end_time,
+                "total_time_seconds": self.total_time_seconds,
+                "is_active": self.is_active,
+                "session_folder": os.path.basename(self.session_folder),
+                
+                # Include original fields for backward compatibility
                 "sample_id": self.sample_id,
                 "sample_name": self.sample_name,
-                "client_sample_name": self.client_sample_name,  # Save client sample name
-                "tcl_id": self.tcl_id,  # Save TCL ID
-                "sample_type": self.sample_type,
-                "preparation_method": self.preparation_method,
-                "operator_name": self.operator_name,
                 "notes": self.notes,
                 "creation_date": self.creation_date,
                 "last_modified": self.last_modified,

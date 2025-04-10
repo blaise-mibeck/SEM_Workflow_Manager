@@ -1,0 +1,20 @@
+{
+    "session_type": "EDX",
+    "operator_name": "Blaise Mibeck",
+    "project_number": "12345",
+    "tcl_sample_id": "12345",
+    "client_sample_id": "12",
+    "sample_type": "Fine powder",
+    "stub_type": "Standard 12.5mm",
+    "electrically_conductive": true,
+    "preparation_method": "Flick",
+    "gold_coating_thickness": "",
+    "vacuum_drying_time": "",
+    "stage_position": 2,
+    "creation_time": "2025-04-07T12:15:51.869896",
+    "start_time": "2025-04-07T12:16:48.966708",
+    "end_time": "2025-04-07T12:17:22.205365",
+    "total_time_seconds": 64.351757,
+    "is_active": false,
+    "session_folder": "EDX1-018"
+}
