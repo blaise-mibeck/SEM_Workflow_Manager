@@ -10,11 +10,13 @@ from models.metadata_extractor import MetadataExtractor
 from workflows.mag_grid import MagGridWorkflow
 from workflows.compare_grid import CompareGridWorkflow
 from workflows.mode_grid import ModeGridWorkflow
+from workflows.annotate_overview import AnnotateOverviewWorkflow
 from ui.session_panel import SessionPanel
 from ui.workflow_panel import WorkflowPanel
 from ui.grid_preview import GridPreviewPanel
 from ui.compare_grid_panel import CompareGridPanel
 from ui.mode_grid_panel import ModeGridPanel
+from ui.annotate_overview_panel import AnnotateOverviewPanel
 
 logger = Logger(__name__)
 
@@ -42,7 +44,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self.workflows = {
             "MagGrid": MagGridWorkflow(self.session_manager),
             "CompareGrid": CompareGridWorkflow(self.session_manager),
-            "ModeGrid": ModeGridWorkflow(self.session_manager)
+            "ModeGrid": ModeGridWorkflow(self.session_manager),
+            "AnnotateOverview": AnnotateOverviewWorkflow(self.session_manager)
         }
         
         # Initialize UI components
@@ -103,6 +106,17 @@ class MainWindow(QtWidgets.QMainWindow):
         mode_layout.addWidget(self.mode_grid_panel)
         
         self.left_tabs.addTab(mode_tab, "Mode Grid")
+        
+        # AnnotateOverview tab
+        annotate_tab = QtWidgets.QWidget()
+        annotate_layout = QtWidgets.QVBoxLayout(annotate_tab)
+        
+        # AnnotateOverview panel
+        self.annotate_overview_panel = AnnotateOverviewPanel(self.session_manager)
+        self.annotate_overview_panel.set_workflow(self.workflows["AnnotateOverview"])
+        annotate_layout.addWidget(self.annotate_overview_panel)
+        
+        self.left_tabs.addTab(annotate_tab, "Annotate Overview")
         
         # Right panel - Grid preview and export
         right_panel = QtWidgets.QWidget()
@@ -208,6 +222,9 @@ class MainWindow(QtWidgets.QMainWindow):
         
         # Connect ModeGrid panel signals
         self.mode_grid_panel.grid_created.connect(self._on_mode_grid_created)
+        
+        # Connect AnnotateOverview panel signals
+        self.annotate_overview_panel.grid_created.connect(self._on_annotate_overview_created)
         
         # Connect tab change signals
         self.left_tabs.currentChanged.connect(self._on_tab_changed)
@@ -404,6 +421,8 @@ class MainWindow(QtWidgets.QMainWindow):
             self.discover_comparisons()
         elif current_tab == 2:  # ModeGrid tab
             self.mode_grid_panel.discover_collections()
+        elif current_tab == 3:  # AnnotateOverview tab
+            self.annotate_overview_panel.discover_collections()
     
     def _show_about(self):
         """Show about dialog."""
@@ -547,6 +566,14 @@ class MainWindow(QtWidgets.QMainWindow):
             
             # Store the current ModeGrid collection for context menu
             self.current_mode_collection = collection
+            
+    def _on_annotate_overview_created(self, grid_image, collection):
+        """Handle grid created signal from AnnotateOverview panel."""
+        if grid_image and collection:
+            self.grid_preview.set_preview(grid_image, collection)
+            
+            # Store the current AnnotateOverview collection
+            self.current_annotate_collection = collection
     
     def _on_tab_changed(self, index):
         """Handle tab change events."""
