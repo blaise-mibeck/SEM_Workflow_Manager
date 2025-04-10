@@ -146,12 +146,24 @@ class SessionInfo:
     
     def save(self):
         """
-        Save session information to JSON file.
+        Save session information to JSON file and summary text file.
         
         Returns:
             bool: True if successful, False otherwise
         """
         try:
+            # First check if the session folder exists
+            if not os.path.exists(self.session_folder):
+                error_msg = f"Session folder does not exist: {self.session_folder}"
+                logger.error(error_msg)
+                raise FileNotFoundError(error_msg)
+            
+            # Check if we have write permissions
+            if os.path.exists(self.info_file) and not os.access(self.info_file, os.W_OK):
+                error_msg = f"No write permission for file: {self.info_file}"
+                logger.error(error_msg)
+                raise PermissionError(error_msg)
+                
             # Update last modified timestamp (for backward compatibility)
             self.last_modified = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             
@@ -191,14 +203,106 @@ class SessionInfo:
                 "history": self.history
             }
             
-            # Save to file
-            with open(self.info_file, 'w') as f:
-                json.dump(data, f, indent=4)
+            # Try to serialize to JSON first to catch any JSON serialization errors
+            try:
+                json_str = json.dumps(data, indent=4)
+            except Exception as json_err:
+                error_msg = f"JSON serialization error: {str(json_err)}"
+                logger.error(error_msg)
+                raise TypeError(error_msg)
             
-            logger.info(f"Saved session info: {self.info_file}")
-            return True
+            # Save to JSON file
+            try:
+                with open(self.info_file, 'w') as f:
+                    f.write(json_str)
+                
+                logger.info(f"Saved session info: {self.info_file}")
+                
+                # Also save summary text file
+                success = self._save_summary_txt()
+                if not success:
+                    logger.warning("Failed to save session summary text file")
+                
+                return True
+            except (IOError, PermissionError) as write_err:
+                error_msg = f"Error writing to file {self.info_file}: {str(write_err)}"
+                logger.error(error_msg)
+                raise
+                
         except Exception as e:
             logger.error(f"Failed to save session info: {str(e)}")
+            return False
+    
+    def _save_summary_txt(self):
+        """
+        Save session information to a human-readable summary text file.
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        try:
+            # Define the summary file path
+            summary_file = os.path.join(self.session_folder, "session_summary.txt")
+            
+            # Check if we have write permissions
+            if os.path.exists(summary_file) and not os.access(summary_file, os.W_OK):
+                logger.error(f"No write permission for summary file: {summary_file}")
+                return False
+            
+            # Calculate the total time in a readable format
+            total_time_str = "N/A"
+            if self.total_time_seconds > 0:
+                minutes, seconds = divmod(int(self.total_time_seconds), 60)
+                hours, minutes = divmod(minutes, 60)
+                if hours > 0:
+                    total_time_str = f"{hours}:{minutes:02d}:{seconds:02d}"
+                else:
+                    total_time_str = f"{minutes:02d}:{seconds:02d}"
+            
+            # Determine the session ID
+            session_id = os.path.basename(self.session_folder)
+            
+            # Create the summary text
+            summary_text = f"=== {self.session_type} Session Summary ===\n\n"
+            summary_text += f"Session ID: {session_id}\n"
+            summary_text += f"Created: {self.creation_date}\n"
+            summary_text += f"Status: {'Active' if self.is_active else 'Inactive'}\n"
+            summary_text += f"Total Time: {total_time_str}\n\n"
+            
+            # Operator Information
+            summary_text += "-- Operator Information --\n"
+            summary_text += f"Operator: {self.operator_name}\n\n"
+            
+            # Sample Information
+            summary_text += "-- Sample Information --\n"
+            summary_text += f"Project Number: {self.project_number}\n"
+            summary_text += f"TCL Sample ID: {self.tcl_sample_id}\n"
+            summary_text += f"Client Sample ID: {self.client_sample_id}\n"
+            summary_text += f"Sample Type: {self.sample_type}\n"
+            summary_text += f"Electrically Conductive: {'Yes' if self.electrically_conductive else 'No'}\n\n"
+            
+            # Preparation Details
+            summary_text += "-- Preparation Details --\n"
+            summary_text += f"Preparation Method: {self.preparation_method}\n"
+            summary_text += f"Gold Coating Thickness: {self.gold_coating_thickness}\n"
+            summary_text += f"Vacuum Drying Time: {self.vacuum_drying_time}\n"
+            summary_text += f"Stage Position: {self.stage_position}\n\n"
+            
+            # Notes section if notes exist
+            if self.notes:
+                summary_text += "-- Notes --\n"
+                summary_text += f"{self.notes}\n\n"
+            
+            summary_text += "Generated by SEM Session Manager"
+            
+            # Write to file
+            with open(summary_file, 'w') as f:
+                f.write(summary_text)
+            
+            logger.info(f"Saved session summary: {summary_file}")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to save session summary: {str(e)}")
             return False
     
     def update_field(self, field_name, value):

@@ -53,6 +53,13 @@ class SessionPanel(QtWidgets.QGroupBox):
         browse_button.clicked.connect(self._browse_session_folder)
         folder_layout.addWidget(browse_button)
         
+        open_explorer_button = QtWidgets.QPushButton("Open in Explorer")
+        open_explorer_button.setToolTip("Open Windows Explorer to the session folder")
+        open_explorer_button.clicked.connect(self._open_folder_in_explorer)
+        open_explorer_button.setEnabled(False)  # Initially disabled until a session is opened
+        self.open_explorer_button = open_explorer_button  # Store reference for later enabling/disabling
+        folder_layout.addWidget(open_explorer_button)
+        
         layout.addLayout(folder_layout)
         
         # Session type selection
@@ -372,19 +379,79 @@ class SessionPanel(QtWidgets.QGroupBox):
         session.update_field("operator_name", self.operator_name_edit.text())
         session.update_field("notes", self.notes_edit.toPlainText())
         
-        # Save to file
-        if session.save():
-            logger.info("Session information saved successfully")
-            self.update_session_info()  # Refresh UI
-            
-            # Emit signal
-            self.session_info_updated.emit()
-        else:
-            logger.error("Failed to save session information")
-            QtWidgets.QMessageBox.warning(
+        # Verify session folder exists
+        if not os.path.exists(session.session_folder):
+            error_msg = f"Session folder does not exist: {session.session_folder}"
+            logger.error(error_msg)
+            QtWidgets.QMessageBox.critical(
                 self,
                 "Save Error",
-                "Failed to save session information."
+                f"Cannot save session information: {error_msg}\n\n"
+                f"The session folder may have been moved, renamed, or deleted."
+            )
+            return
+            
+        # Check if session folder is writable
+        if not os.access(session.session_folder, os.W_OK):
+            error_msg = f"No write permission for folder: {session.session_folder}"
+            logger.error(error_msg)
+            QtWidgets.QMessageBox.critical(
+                self,
+                "Save Error",
+                f"Cannot save session information: {error_msg}\n\n"
+                f"You don't have permission to write to this folder."
+            )
+            return
+        
+        # Save to file
+        try:
+            if session.save():
+                logger.info("Session information saved successfully")
+                
+                # Show success message indicating both files were saved
+                QtWidgets.QMessageBox.information(
+                    self,
+                    "Save Successful",
+                    "Session information saved successfully to:\n"
+                    f"- session_info.json\n"
+                    f"- session_summary.txt"
+                )
+                
+                self.update_session_info()  # Refresh UI
+                
+                # Emit signal
+                self.session_info_updated.emit()
+            else:
+                # This is a fallback for when save() returns False but doesn't raise an exception
+                logger.error("Failed to save session information")
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "Save Error",
+                    "Failed to save session information.\n\n"
+                    "Check the application logs for more details."
+                )
+        except FileNotFoundError as e:
+            logger.exception(f"Save failed - folder not found: {str(e)}")
+            QtWidgets.QMessageBox.critical(
+                self,
+                "Save Error",
+                f"Cannot save session information: {str(e)}\n\n"
+                f"The session folder may have been moved, renamed, or deleted."
+            )
+        except PermissionError as e:
+            logger.exception(f"Save failed - permission error: {str(e)}")
+            QtWidgets.QMessageBox.critical(
+                self,
+                "Save Error",
+                f"Cannot save session information: {str(e)}\n\n"
+                f"You don't have permission to write to this file or folder."
+            )
+        except Exception as e:
+            logger.exception(f"Save failed with unexpected error: {str(e)}")
+            QtWidgets.QMessageBox.critical(
+                self,
+                "Save Error",
+                f"Unexpected error while saving session information:\n{str(e)}"
             )
 
     
@@ -425,6 +492,30 @@ class SessionPanel(QtWidgets.QGroupBox):
         else:
             field.setStyleSheet("background-color: #FFDDDD;")
     
+    def _open_folder_in_explorer(self):
+        """Open Windows Explorer to the current session folder."""
+        if hasattr(self, 'folder_edit') and self.folder_edit.text():
+            folder_path = self.folder_edit.text()
+            try:
+                # Use os.startfile which is Windows-specific to open the folder in Explorer
+                import os
+                if os.path.exists(folder_path):
+                    os.startfile(folder_path)
+                    logger.info(f"Opened Windows Explorer to session folder: {folder_path}")
+                else:
+                    QtWidgets.QMessageBox.warning(
+                        self,
+                        "Folder Not Found",
+                        f"The folder {folder_path} does not exist."
+                    )
+            except Exception as e:
+                logger.exception(f"Error opening folder in Explorer: {str(e)}")
+                QtWidgets.QMessageBox.critical(
+                    self,
+                    "Explorer Error",
+                    f"Error opening folder in Explorer: {str(e)}"
+                )
+    
     def _set_form_enabled(self, enabled):
         """Enable or disable the form fields."""
         # Session type
@@ -452,6 +543,7 @@ class SessionPanel(QtWidgets.QGroupBox):
         # Buttons
         self.save_button.setEnabled(enabled)
         self.reset_button.setEnabled(enabled)
+        self.open_explorer_button.setEnabled(enabled)  # Enable/disable Explorer button
         
         # If form is enabled, validate it to update save button state
         if enabled:

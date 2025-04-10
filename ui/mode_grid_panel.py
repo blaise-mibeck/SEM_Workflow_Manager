@@ -50,10 +50,19 @@ class ModeGridPanel(QtWidgets.QGroupBox):
         self.collection_list.itemSelectionChanged.connect(self._on_collection_selected)
         collection_layout.addWidget(self.collection_list)
         
-        # Discover button
+        # Collection management buttons
+        button_layout = QtWidgets.QHBoxLayout()
+        
         self.discover_button = QtWidgets.QPushButton("Discover Collections")
         self.discover_button.clicked.connect(self.discover_collections)
-        collection_layout.addWidget(self.discover_button)
+        button_layout.addWidget(self.discover_button)
+        
+        self.create_collection_button = QtWidgets.QPushButton("Create Collection")
+        self.create_collection_button.setToolTip("Create a custom collection by selecting images")
+        self.create_collection_button.clicked.connect(self._create_custom_collection)
+        button_layout.addWidget(self.create_collection_button)
+        
+        collection_layout.addLayout(button_layout)
         
         layout.addWidget(collection_group)
         
@@ -350,3 +359,130 @@ class ModeGridPanel(QtWidgets.QGroupBox):
                 "Update Error",
                 f"Error updating grid visualization: {str(e)}"
             )
+    
+    def _create_custom_collection(self):
+        """Create a custom collection by selecting images."""
+        if not self.session_manager or not self.session_manager.current_session:
+            QtWidgets.QMessageBox.warning(
+                self,
+                "No Session",
+                "Please open a session folder first."
+            )
+            return
+            
+        # Create a dialog for image selection
+        dialog = QtWidgets.QDialog(self)
+        dialog.setWindowTitle("Create Custom ModeGrid Collection")
+        dialog.setMinimumWidth(800)
+        dialog.setMinimumHeight(600)
+        
+        # Create layout
+        main_layout = QtWidgets.QVBoxLayout(dialog)
+        
+        # Create label
+        label = QtWidgets.QLabel("Select images for the custom collection (hold Ctrl to select multiple):")
+        main_layout.addWidget(label)
+        
+        # Create image list widget
+        image_list = QtWidgets.QListWidget(dialog)
+        image_list.setSelectionMode(QtWidgets.QAbstractItemView.ExtendedSelection)
+        main_layout.addWidget(image_list)
+        
+        # Add images to the list
+        for img_path, metadata in self.session_manager.metadata.items():
+            if metadata.is_valid():
+                # Get mode for this image
+                mode = self.workflow._get_mode_from_metadata(metadata)
+                mode_display = self.workflow._get_mode_display_name(metadata)
+                
+                # Get filename
+                filename = os.path.basename(img_path)
+                
+                # Create item text
+                item_text = f"{filename} - {mode_display}"
+                
+                # Create list item
+                item = QtWidgets.QListWidgetItem(item_text)
+                item.setData(QtCore.Qt.UserRole, img_path)
+                
+                # Add icon if possible (could add a thumbnail preview)
+                item.setIcon(QtWidgets.QApplication.style().standardIcon(QtWidgets.QStyle.SP_FileIcon))
+                
+                # Add to list
+                image_list.addItem(item)
+        
+        # Collection ID input
+        id_layout = QtWidgets.QHBoxLayout()
+        id_label = QtWidgets.QLabel("Collection ID:")
+        id_layout.addWidget(id_label)
+        
+        id_edit = QtWidgets.QLineEdit(dialog)
+        id_edit.setPlaceholderText("Enter a unique identifier for this collection")
+        id_layout.addWidget(id_edit)
+        
+        main_layout.addLayout(id_layout)
+        
+        # Add buttons
+        button_box = QtWidgets.QDialogButtonBox(
+            QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel,
+            dialog
+        )
+        button_box.accepted.connect(dialog.accept)
+        button_box.rejected.connect(dialog.reject)
+        main_layout.addWidget(button_box)
+        
+        # Show dialog
+        if dialog.exec_() == QtWidgets.QDialog.Accepted:
+            # Get selected images
+            selected_items = image_list.selectedItems()
+            if not selected_items:
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "No Images Selected",
+                    "Please select at least 2 images for the collection."
+                )
+                return
+            
+            selected_paths = [item.data(QtCore.Qt.UserRole) for item in selected_items]
+            
+            # Check if enough images selected
+            if len(selected_paths) < 2:
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "Not Enough Images",
+                    "Please select at least 2 images for the collection."
+                )
+                return
+            
+            # Get collection ID
+            collection_id = id_edit.text().strip()
+            if not collection_id:
+                # Generate a default ID
+                from datetime import datetime
+                collection_id = f"custom_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+            
+            # Create collection
+            collection = self.workflow._create_mode_collection_from_paths(collection_id, selected_paths)
+            
+            if collection:
+                # Add to workflow collections
+                self.workflow.collections.append(collection)
+                
+                # Save collection
+                self.workflow.save_collection(collection)
+                
+                # Update list
+                self._update_collections_list()
+                
+                # Show success message
+                QtWidgets.QMessageBox.information(
+                    self,
+                    "Collection Created",
+                    f"Custom collection '{collection_id}' created with {len(selected_paths)} images."
+                )
+            else:
+                QtWidgets.QMessageBox.warning(
+                    self,
+                    "Collection Error",
+                    "Failed to create custom collection. Make sure the selected images have compatible metadata."
+                )
