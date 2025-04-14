@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from qtpy import QtWidgets
 from utils.logger import Logger
-from workflows.workflow_base import WorkflowBase
+from workflows.workflow_base import WorkflowBase, convert_to_serializable
 
 logger = Logger(__name__)
 
@@ -39,6 +39,30 @@ class CompareGridWorkflow(WorkflowBase):
             if session_manager.current_session:
                 self.sessions[session_manager.session_folder] = session_manager.current_session
                 self.all_metadata.update(session_manager.metadata)
+                
+        # Call _setup_workflow_folder explicitly to ensure it has the correct path
+        self._setup_workflow_folder()
+    
+    def _setup_workflow_folder(self):
+        """
+        Override the workflow folder setup to handle the multi-session nature of CompareGrid.
+        """
+        if not self.session_manager or not self.session_manager.session_folder:
+            return
+        
+        # Use the main session folder for the workflow folder
+        workflow_name = self.__class__.__name__
+        self.workflow_folder = os.path.join(
+            self.session_manager.session_folder,
+            workflow_name
+        )
+        
+        if not os.path.exists(self.workflow_folder):
+            try:
+                os.makedirs(self.workflow_folder)
+                logger.info(f"Created CompareGrid workflow folder: {self.workflow_folder}")
+            except Exception as e:
+                logger.error(f"Failed to create workflow folder: {str(e)}")
     
     def name(self):
         """Get the user-friendly name of the workflow."""
@@ -419,6 +443,9 @@ class CompareGridWorkflow(WorkflowBase):
                     "description": f"{mode} mode at {int(representative_mag)}x, {voltage} kV"
                 }
                 
+                # Ensure collection has complete metadata
+                self._ensure_full_metadata(collection)
+                
                 self.collections.append(collection)
                 self.save_collection(collection)
                 
@@ -476,16 +503,50 @@ class CompareGridWorkflow(WorkflowBase):
         rows, cols = layout
         logger.info(f"Creating CompareGrid with layout {rows}x{cols} for {num_images} samples")
         
-        # Load all images
+        # Load all images with improved error handling
         pil_images = []
+        missing_images = []
+        
         for img_data in images_data:
             try:
-                img_path = img_data["path"]
+                img_path = img_data.get("path", "")
+                
+                if not img_path:
+                    logger.error("Image path is missing in collection data")
+                    missing_images.append("Unknown path")
+                    continue
+                
+                # Verify the file exists
+                if not os.path.exists(img_path):
+                    logger.error(f"Image file does not exist: {img_path}")
+                    missing_images.append(os.path.basename(img_path))
+                    continue
+                
+                # Try to open the image
                 img = Image.open(img_path)
                 pil_images.append(img)
+                logger.info(f"Successfully loaded image: {img_path}")
             except Exception as e:
-                logger.error(f"Error loading image {img_path}: {str(e)}")
-                return None
+                logger.error(f"Error loading image {img_data.get('path', 'Unknown')}: {str(e)}")
+                if 'path' in img_data:
+                    missing_images.append(os.path.basename(img_data["path"]))
+                else:
+                    missing_images.append("Unknown path")
+        
+        # If no images could be loaded, show detailed error and return
+        if not pil_images:
+            error_msg = "Failed to load any images. Please check that all image files exist."
+            if missing_images:
+                error_msg += f"\nMissing images: {', '.join(missing_images)}"
+            logger.error(error_msg)
+            QtWidgets.QMessageBox.critical(None, "Image Loading Error", error_msg)
+            return None
+            
+        # If some images are missing, warn but continue with available ones
+        if missing_images and len(pil_images) < len(images_data):
+            warn_msg = f"Some images could not be loaded ({len(missing_images)} missing).\nThe grid will be created with available images only."
+            logger.warning(warn_msg)
+            QtWidgets.QMessageBox.warning(None, "Partial Image Loading", warn_msg)
         
         # Determine the size of grid cells (use the max width and height)
         cell_width = max(img.width for img in pil_images)
@@ -505,14 +566,15 @@ class CompareGridWorkflow(WorkflowBase):
         draw = ImageDraw.Draw(grid_img)
         
         try:
-            # INCREASED: Use larger font size base (was 10)
-            font_size = 16  # Increased base font size
+            # Get custom font size from options or use default
+            base_font_size = options.get("font_size", 16)
             # Scale based on grid width (approximate for 6.5 inch document)
             target_doc_width_inches = 6.5
             pixels_per_inch = 300  # Typical print resolution
             target_width_pixels = target_doc_width_inches * pixels_per_inch
             font_scale = grid_width / target_width_pixels
-            adjusted_font_size = max(int(font_size / font_scale), 14)  # Set minimum size of 14
+            adjusted_font_size = max(int(base_font_size / font_scale), 8)  # Allow smaller minimum size
+            logger.info(f"Using user-specified font size: {base_font_size}, adjusted to: {adjusted_font_size}")
             
             # Try to load the font
             try:
@@ -567,12 +629,20 @@ class CompareGridWorkflow(WorkflowBase):
             elif options["label_style"] == "both" and sample_name:
                 label_text = f"{sample_id}: {sample_name}"
             
-            # Position the label
+            # Center the label both horizontally and vertically in the white space above the image
             label_x = x + (cell_width // 2)
-            label_y = y - label_height + 5  # Added small offset
+            
+            # Calculate text dimensions to center vertically
+            text_width = draw.textlength(label_text, font=font)
+            
+            # Use textbbox to get text dimensions (compatible with newer Pillow)
+            text_bbox = draw.textbbox((0, 0), label_text, font=font)
+            text_height = text_bbox[3] - text_bbox[1]
+            
+            # Position in the middle of the label area
+            label_y = y - label_height + ((label_height - text_height) // 2)
             
             # Draw the label text with center alignment
-            text_width = draw.textlength(label_text, font=font)
             draw.text(
                 (label_x - (text_width // 2), label_y),
                 label_text,
@@ -617,6 +687,101 @@ class CompareGridWorkflow(WorkflowBase):
         
         logger.info(f"Created CompareGrid visualization with {num_images} samples")
         return grid_img
+    
+    def _ensure_full_metadata(self, collection):
+        """
+        Make sure all images in the collection have complete metadata stored.
+        This helps make the collection independent from session data.
+        Also normalizes paths to ensure consistent handling across sessions.
+        
+        Args:
+            collection: Collection to enhance with metadata
+        """
+        if not collection or "images" not in collection:
+            return
+            
+        # Find common parent directory for all sessions
+        session_folders = set()
+        for img_data in collection["images"]:
+            if "session_folder" in img_data:
+                session_folders.add(img_data["session_folder"])
+        
+        # Find the common parent if there are multiple session folders
+        common_parent = None
+        if len(session_folders) > 1:
+            # Convert to list and sort for consistent processing
+            folders = sorted(list(session_folders))
+            
+            # Try to find common parent by comparing path components
+            parts_list = [os.path.normpath(folder).split(os.sep) for folder in folders]
+            min_parts = min(len(parts) for parts in parts_list)
+            
+            # Find common prefix parts
+            common_parts = []
+            for i in range(min_parts):
+                if all(parts[i] == parts_list[0][i] for parts in parts_list):
+                    common_parts.append(parts_list[0][i])
+                else:
+                    break
+            
+            # If we found common parts, join them to form the common parent path
+            if common_parts:
+                common_parent = os.sep.join(common_parts)
+                if common_parent.endswith(os.sep):
+                    common_parent = common_parent[:-1]
+                logger.info(f"Found common parent directory: {common_parent}")
+        
+        # Check each image entry
+        for img_data in collection["images"]:
+            # Make sure all necessary fields are present
+            if "path" not in img_data:
+                logger.warning("Image entry missing path field")
+                continue
+                
+            # Extract and normalize path
+            img_path = img_data["path"]
+            session_folder = img_data.get("session_folder", "")
+            filename = os.path.basename(img_path)
+            
+            # Ensure the path is absolute
+            if not os.path.isabs(img_path) and session_folder:
+                # Reconstruct absolute path
+                img_path = os.path.join(session_folder, img_path)
+                img_data["path"] = img_path
+            
+            # Check if file exists and try to fix if not
+            if not os.path.exists(img_path):
+                # Try to locate the file in the session folder
+                if session_folder and os.path.exists(session_folder):
+                    potential_path = os.path.join(session_folder, filename)
+                    if os.path.exists(potential_path):
+                        logger.info(f"Fixed path for {filename}: {potential_path}")
+                        img_path = potential_path
+                        img_data["path"] = img_path
+                
+                # If common parent is found, try to reconstruct path relative to it
+                if common_parent and not os.path.exists(img_path):
+                    # Get session name from session folder path
+                    session_name = os.path.basename(session_folder)
+                    
+                    # Try to reconstruct path based on common parent and session name
+                    potential_path = os.path.join(common_parent, session_name, filename)
+                    if os.path.exists(potential_path):
+                        logger.info(f"Fixed path for {filename} using common parent: {potential_path}")
+                        img_path = potential_path
+                        img_data["path"] = img_path
+                        
+                        # Update session folder to be consistent
+                        new_session_folder = os.path.join(common_parent, session_name)
+                        img_data["session_folder"] = new_session_folder
+            
+            # Store the file existence status and path information
+            img_data["file_exists"] = os.path.exists(img_path)
+            img_data["filename"] = filename
+            img_data["parent_dir"] = os.path.dirname(img_path)
+            
+            # Store path information for debugging
+            img_data["normalized_path"] = os.path.normpath(img_path)
     
     def switch_image_alternative(self, collection, image_index, alternative_path):
         """
@@ -681,6 +846,146 @@ class CompareGridWorkflow(WorkflowBase):
             return collection
     
 
+    def export_grid(self, grid_image, collection):
+        """
+        Override to export grid visualization to CompareGrids folder in the parent directory.
+        
+        Args:
+            grid_image: PIL Image object
+            collection: Collection data
+            
+        Returns:
+            tuple: (image_path, caption_path) paths to the exported files
+        """
+        # Add necessary imports
+        import datetime
+        
+        try:
+            # Find the common parent directory of all session folders
+            session_folders = []
+            common_parent = None
+            
+            # Collect all session folders
+            for img_data in collection.get("images", []):
+                if "session_folder" in img_data and img_data["session_folder"]:
+                    session_folders.append(img_data["session_folder"])
+            
+            if not session_folders and self.session_manager and self.session_manager.session_folder:
+                session_folders.append(self.session_manager.session_folder)
+            
+            if session_folders:
+                # For a single session, use its parent directory
+                if len(session_folders) == 1:
+                    common_parent = os.path.dirname(session_folders[0])
+                    logger.info(f"Using parent directory of single session: {common_parent}")
+                else:
+                    # For multiple sessions, find common parent
+                    # Convert to list and sort for consistent processing
+                    folders = sorted(list(set(session_folders)))
+                    
+                    # Try to find common parent by comparing path components
+                    parts_list = [os.path.normpath(folder).split(os.sep) for folder in folders]
+                    min_parts = min(len(parts) for parts in parts_list)
+                    
+                    # Find common prefix parts
+                    common_parts = []
+                    for i in range(min_parts):
+                        if all(parts[i] == parts_list[0][i] for parts in parts_list):
+                            common_parts.append(parts_list[0][i])
+                        else:
+                            break
+                    
+                    # If we found common parts, join them to form the common parent path
+                    if common_parts:
+                        common_parent = os.sep.join(common_parts)
+                        if common_parent.endswith(os.sep):
+                            common_parent = common_parent[:-1]
+                        logger.info(f"Found common parent directory for export: {common_parent}")
+            
+            # If we couldn't determine a common parent, fall back to the workflow folder
+            if not common_parent:
+                if self.workflow_folder:
+                    common_parent = os.path.dirname(self.workflow_folder)
+                elif self.session_manager and self.session_manager.session_folder:
+                    common_parent = os.path.dirname(self.session_manager.session_folder)
+                else:
+                    # Last resort fallback to temp directory
+                    import tempfile
+                    common_parent = tempfile.gettempdir()
+                    logger.warning(f"Using temporary folder as fallback: {common_parent}")
+            
+            # Create "CompareGrids" folder in the common parent directory
+            grids_folder = os.path.join(common_parent, "CompareGrids")
+            if not os.path.exists(grids_folder):
+                try:
+                    os.makedirs(grids_folder)
+                    logger.info(f"Created CompareGrids folder: {grids_folder}")
+                except Exception as e:
+                    logger.error(f"Failed to create CompareGrids folder, using parent folder: {str(e)}")
+                    grids_folder = common_parent
+            
+            # Get session information or use defaults
+            session_id = "CompareGrid"
+            
+            # Collect sample IDs from all images in the collection
+            sample_ids = []
+            for img in collection.get("images", []):
+                if img.get("sample_id") and img.get("sample_id") not in sample_ids:
+                    sample_ids.append(img.get("sample_id"))
+            
+            # Use combined sample IDs in filename (limit to first 3 for length)
+            if sample_ids:
+                if len(sample_ids) <= 3:
+                    sample_id = "_".join(sample_ids)
+                else:
+                    sample_id = "_".join(sample_ids[:3]) + "_etc"
+            else:
+                sample_id = "Unknown"
+            
+            # Add magnification and mode to the filename for better identification
+            mag = collection.get("magnification", "")
+            mode = collection.get("mode", "")
+            
+            # Create a descriptive base filename using just Mode and Magnification
+            base_filename = f"CompareGrid_{mode}_{mag}x"
+            
+            # Clean up any characters that might be problematic in filenames
+            for char in [':', '*', '?', '"', '<', '>', '|', '/', '\\']:
+                base_filename = base_filename.replace(char, '_')
+            
+            # Use simple filenames without counters as requested
+            image_filename = f"{base_filename}.png"
+            caption_filename = f"{base_filename}.txt"
+            collection_filename = f"{base_filename}.json"
+            
+            # Create full paths
+            image_path = os.path.join(grids_folder, image_filename)
+            caption_path = os.path.join(grids_folder, caption_filename)
+            collection_path = os.path.join(grids_folder, collection_filename)
+            
+            # Save the grid image
+            logger.info(f"Saving grid image to: {image_path}")
+            grid_image.save(image_path, format="PNG")
+            
+            # Create a caption file
+            logger.info(f"Saving caption to: {caption_path}")
+            with open(caption_path, 'w', encoding='utf-8') as f:
+                f.write(self._generate_caption(collection))
+            
+            # Convert to serializable format and save the collection data
+            logger.info(f"Saving collection data to: {collection_path}")
+            serializable_collection = convert_to_serializable(collection)
+            with open(collection_path, 'w', encoding='utf-8') as f:
+                json.dump(serializable_collection, f, indent=4)
+            
+            logger.info(f"Export completed successfully to: {grids_folder}")
+            
+            return image_path, caption_path
+            
+        except Exception as e:
+            logger.exception(f"Error during export: {str(e)}")
+            raise Exception(f"Failed to export grid: {str(e)}")
+    
     def _generate_caption(self, collection):
         """
         Generate a more comprehensive caption for the CompareGrid visualization.

@@ -43,6 +43,8 @@ class SessionInfo:
         self.operator_name = ""
         self.notes = ""
         
+        # Property for backward compatibility with code that uses tcl_id
+        
         # Timestamps (in ISO format to match SEM_Session_Manager)
         self.creation_time = datetime.datetime.now().isoformat()
         self.start_time = ""
@@ -60,6 +62,46 @@ class SessionInfo:
             self.load()
         else:
             logger.info(f"Creating new session info for: {session_folder}")
+            
+    @property
+    def tcl_id(self):
+        """
+        Property for backward compatibility with code that expects tcl_id instead of tcl_sample_id.
+        
+        Returns:
+            str: The tcl_sample_id value
+        """
+        return self.tcl_sample_id
+        
+    @tcl_id.setter
+    def tcl_id(self, value):
+        """
+        Setter for backward compatibility with code that sets tcl_id instead of tcl_sample_id.
+        
+        Args:
+            value (str): The value to set for tcl_sample_id
+        """
+        self.tcl_sample_id = value
+        
+    @property
+    def client_sample_name(self):
+        """
+        Property for backward compatibility with code that expects client_sample_name instead of client_sample_id.
+        
+        Returns:
+            str: The client_sample_id value
+        """
+        return self.client_sample_id
+        
+    @client_sample_name.setter
+    def client_sample_name(self, value):
+        """
+        Setter for backward compatibility with code that sets client_sample_name instead of client_sample_id.
+        
+        Args:
+            value (str): The value to set for client_sample_id
+        """
+        self.client_sample_id = value
     
     def load(self):
         """

@@ -226,13 +226,16 @@ class CompareGridPanel(QtWidgets.QGroupBox):
         
         layout.addWidget(session_group)
         
-        # Collection selection
+        # Collection selection with tree structure
         collection_group = QtWidgets.QGroupBox("Collections")
         collection_layout = QtWidgets.QVBoxLayout(collection_group)
         
-        self.collection_list = QtWidgets.QListWidget()
-        self.collection_list.itemSelectionChanged.connect(self._on_collection_selected)
-        collection_layout.addWidget(self.collection_list)
+        self.collection_tree = QtWidgets.QTreeWidget()
+        self.collection_tree.setHeaderLabels(["Description", "Status"])
+        self.collection_tree.setColumnWidth(0, 300)
+        self.collection_tree.setColumnWidth(1, 100)
+        self.collection_tree.itemSelectionChanged.connect(self._on_collection_selected)
+        collection_layout.addWidget(self.collection_tree)
         
         # FIXED: Changed method name in connect to match class method name
         # Collection discovery button
@@ -251,6 +254,20 @@ class CompareGridPanel(QtWidgets.QGroupBox):
         self.label_combo.addItem("Sample Name", "name")
         self.label_combo.addItem("Both ID and Name", "both")
         label_layout.addRow("Label Type:", self.label_combo)
+        
+        # Font size control with direct entry box
+        font_size_layout = QtWidgets.QHBoxLayout()
+        
+        self.font_size_edit = QtWidgets.QSpinBox()
+        self.font_size_edit.setMinimum(6)
+        self.font_size_edit.setMaximum(72)
+        self.font_size_edit.setValue(16)  # Default value
+        self.font_size_edit.setSuffix(" pt")
+        
+        font_size_layout.addWidget(QtWidgets.QLabel("Font Size:"))
+        font_size_layout.addWidget(self.font_size_edit)
+        
+        label_layout.addRow("", font_size_layout)
         
         layout.addWidget(label_group)
         
@@ -394,35 +411,80 @@ class CompareGridPanel(QtWidgets.QGroupBox):
             )
     
     def _update_collections_list(self):
-        """Update the collections list."""
-        self.collection_list.clear()
+        """Update the collections tree."""
+        self.collection_tree.clear()
         
-        # Add collections to list
+        # Add collections to tree
         for collection in self.workflow.collections:
             desc = collection.get("description", "")
             count = len(collection.get("images", []))
             
+            # Create top-level item
             item_text = f"{desc} ({count} samples)"
+            collection_item = QtWidgets.QTreeWidgetItem([item_text, ""])
+            collection_item.setData(0, QtCore.Qt.UserRole, collection)
+            self.collection_tree.addTopLevelItem(collection_item)
             
-            item = QtWidgets.QListWidgetItem(item_text)
-            item.setData(QtCore.Qt.UserRole, collection)
-            self.collection_list.addItem(item)
+            # Add image items as children
+            for img_index, img_data in enumerate(collection.get("images", [])):
+                img_path = img_data.get("path", "Unknown path")
+                sample_id = img_data.get("sample_id", "Unknown")
+                img_filename = os.path.basename(img_path)
+                
+                # Check if file exists and set status accordingly
+                status = "OK"
+                if not os.path.exists(img_path):
+                    status = "Missing"
+                
+                # Create child item with image details
+                img_text = f"[{sample_id}] {img_filename}"
+                img_item = QtWidgets.QTreeWidgetItem([img_text, status])
+                img_item.setData(0, QtCore.Qt.UserRole, img_data)
+                
+                # Set color based on status
+                if status == "Missing":
+                    img_item.setForeground(1, QtGui.QBrush(QtGui.QColor(255, 0, 0)))  # Red for missing
+                else:
+                    img_item.setForeground(1, QtGui.QBrush(QtGui.QColor(0, 128, 0)))  # Green for OK
+                
+                # Add file path as tooltip
+                img_item.setToolTip(0, img_path)
+                
+                collection_item.addChild(img_item)
+            
+            # Auto-expand collection items
+            collection_item.setExpanded(True)
     
     def _on_collection_selected(self):
         """Handle collection selection."""
-        self.apply_button.setEnabled(self.collection_list.currentItem() is not None)
+        current_item = self.collection_tree.currentItem()
+        
+        # Only enable the apply button if a top-level collection item is selected
+        if current_item and current_item.parent() is None:
+            self.apply_button.setEnabled(True)
+        else:
+            self.apply_button.setEnabled(False)
     
     def create_grid(self):  # Method name without underscore
         """Create grid visualization for selected collection."""
-        current_item = self.collection_list.currentItem()
-        if not current_item:
-            return
+        current_item = self.collection_tree.currentItem()
         
-        collection = current_item.data(QtCore.Qt.UserRole)
+        # If a child item is selected, get its parent (the collection)
+        if current_item:
+            if current_item.parent():
+                current_item = current_item.parent()
+            
+            collection = current_item.data(0, QtCore.Qt.UserRole)
+        else:
+            return
         
         # Get label options
         label_style = self.label_combo.currentData()
-        options = {"label_style": label_style}
+        font_size = self.font_size_edit.value()
+        options = {
+            "label_style": label_style,
+            "font_size": font_size
+        }
         
         # Get layout
         layout_data = self.layout_combo.currentData()
@@ -544,7 +606,11 @@ class CompareGridPanel(QtWidgets.QGroupBox):
         try:
             # Get label options
             label_style = self.label_combo.currentData()
-            options = {"label_style": label_style}
+            font_size = self.font_size_edit.value()
+            options = {
+                "label_style": label_style,
+                "font_size": font_size
+            }
             
             # Get layout
             layout_data = self.layout_combo.currentData()

@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"cline.modelSettings.o3Mini.reasoningEffort": "medium"
+	}
 }

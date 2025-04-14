@@ -108,6 +108,27 @@ class WorkflowPanel(QtWidgets.QGroupBox):
         self.box_style_combo.addItem("Corners", "corners")
         annotation_form.addRow("Box Style:", self.box_style_combo)
         
+        # Line color selection
+        self.line_color_combo = QtWidgets.QComboBox()
+        self.line_color_combo.addItem("Colored", "colored")
+        self.line_color_combo.addItem("White", "white")
+        annotation_form.addRow("Line Color:", self.line_color_combo)
+        
+        # Line thickness slider
+        self.thickness_slider = QtWidgets.QSlider(QtCore.Qt.Horizontal)
+        self.thickness_slider.setMinimum(1)
+        self.thickness_slider.setMaximum(5)
+        self.thickness_slider.setValue(2)
+        self.thickness_slider.setTickPosition(QtWidgets.QSlider.TicksBelow)
+        self.thickness_slider.setTickInterval(1)
+        self.thickness_value = QtWidgets.QLabel("2")
+        self.thickness_slider.valueChanged.connect(lambda v: self.thickness_value.setText(str(v)))
+        
+        thickness_layout = QtWidgets.QHBoxLayout()
+        thickness_layout.addWidget(self.thickness_slider)
+        thickness_layout.addWidget(self.thickness_value)
+        annotation_form.addRow("Line Thickness:", thickness_layout)
+        
         # Label options
         self.label_combo = QtWidgets.QComboBox()
         self.label_combo.addItem("None", "none")
@@ -171,7 +192,9 @@ class WorkflowPanel(QtWidgets.QGroupBox):
         """
         return {
             "box_style": self.box_style_combo.currentData(),
-            "label_style": self.label_combo.currentData()
+            "label_style": self.label_combo.currentData(),
+            "line_color": self.line_color_combo.currentData(),
+            "line_thickness": self.thickness_slider.value()
         }
     
     def _on_workflow_changed(self, index):

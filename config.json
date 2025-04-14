@@ -6,7 +6,7 @@
     "template_match_threshold": 0.5,
     "ui": {
         "theme": "default",
-        "font_size": 10,
+        "font_size": 12,
         "window_size": [
             1200,
             800
@@ -17,16 +17,16 @@
         ]
     },
     "recent_folders": [
-        "T:/Clients/M-O/Nurix Therapeutics, Inc/Projects/2025196_NonGMP_NX-5948_SEM/Data/SEM/SEM1-448",
-        "T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439",
+        "T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-446",
         "C:/Z/_Blaise_Tools/_Notes/SEM1-436",
+        "T:/Clients/M-O/Nurix Therapeutics, Inc/Projects/2025196_NonGMP_NX-5948_SEM/Data/SEM/SEM1-448",
+        "//tcl-01-vsrv02/CompanyShare/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439/Stitch_115x_SED",
+        "T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439",
         "//tcl-01-vsrv02/CompanyShare/Clients/S-T/Triclinic/Projects/2025130_TALC_Verification/Data/SEM/SEM1-447",
         "C:\\Users\\bmibeck",
         "S:/SEM 1/SEM1-442",
         "S:/SEM 1/SEM1-445",
-        "S:/SEM 1/SEM1-431",
-        "S:/SEM 1/SEM1-429",
-        "C:/Z/_Blaise_Tools/SEM_Sessions/EDX1/EDX1-018"
+        "S:/SEM 1/SEM1-431"
     ],
     "mode_grid": {
         "scene_match_tolerance": 0.001,

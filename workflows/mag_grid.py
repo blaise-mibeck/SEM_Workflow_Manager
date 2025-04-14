@@ -378,7 +378,13 @@ class MagGridWorkflow(WorkflowBase):
                     match_rect = next_img_data["match_rect"]
                     
                     # Get color for this box
-                    color = box_colors[i % len(box_colors)]
+                    if options.get("line_color", "colored") == "colored":
+                        color = box_colors[i % len(box_colors)]
+                    else:
+                        color = (255, 255, 255)  # White lines
+                    
+                    # Get line thickness
+                    line_thickness = options.get("line_thickness", 2)
                     
                     # Draw bounding box based on style
                     mx, my, mw, mh = match_rect
@@ -400,7 +406,7 @@ class MagGridWorkflow(WorkflowBase):
                         draw.rectangle(
                             [box_x, box_y, box_right, box_bottom],
                             outline=color,
-                            width=2
+                            width=line_thickness
                         )
                     elif options["box_style"] == "dotted":
                         # Draw dotted rectangle by using short lines
@@ -409,41 +415,41 @@ class MagGridWorkflow(WorkflowBase):
                             # Top edge
                             tx1 = box_x + (mw * d / dots)
                             tx2 = box_x + (mw * (d + 0.5) / dots)
-                            draw.line([(tx1, box_y), (tx2, box_y)], fill=color, width=2)
+                            draw.line([(tx1, box_y), (tx2, box_y)], fill=color, width=line_thickness)
                             
                             # Bottom edge
                             bx1 = box_x + (mw * d / dots)
                             bx2 = box_x + (mw * (d + 0.5) / dots)
-                            draw.line([(bx1, box_bottom), (bx2, box_bottom)], fill=color, width=2)
+                            draw.line([(bx1, box_bottom), (bx2, box_bottom)], fill=color, width=line_thickness)
                             
                             # Left edge
                             ly1 = box_y + (mh * d / dots)
                             ly2 = box_y + (mh * (d + 0.5) / dots)
-                            draw.line([(box_x, ly1), (box_x, ly2)], fill=color, width=2)
+                            draw.line([(box_x, ly1), (box_x, ly2)], fill=color, width=line_thickness)
                             
                             # Right edge
                             ry1 = box_y + (mh * d / dots)
                             ry2 = box_y + (mh * (d + 0.5) / dots)
-                            draw.line([(box_right, ry1), (box_right, ry2)], fill=color, width=2)
+                            draw.line([(box_right, ry1), (box_right, ry2)], fill=color, width=line_thickness)
                     elif options["box_style"] == "corners":
                         # Draw just the corners (L shapes)
                         corner_length = min(20, mw/4, mh/4)  # Length of corner lines
                         
                         # Top-left corner
-                        draw.line([(box_x, box_y), (box_x + corner_length, box_y)], fill=color, width=2)
-                        draw.line([(box_x, box_y), (box_x, box_y + corner_length)], fill=color, width=2)
+                        draw.line([(box_x, box_y), (box_x + corner_length, box_y)], fill=color, width=line_thickness)
+                        draw.line([(box_x, box_y), (box_x, box_y + corner_length)], fill=color, width=line_thickness)
                         
                         # Top-right corner
-                        draw.line([(box_right - corner_length, box_y), (box_right, box_y)], fill=color, width=2)
-                        draw.line([(box_right, box_y), (box_right, box_y + corner_length)], fill=color, width=2)
+                        draw.line([(box_right - corner_length, box_y), (box_right, box_y)], fill=color, width=line_thickness)
+                        draw.line([(box_right, box_y), (box_right, box_y + corner_length)], fill=color, width=line_thickness)
                         
                         # Bottom-left corner
-                        draw.line([(box_x, box_bottom - corner_length), (box_x, box_bottom)], fill=color, width=2)
-                        draw.line([(box_x, box_bottom), (box_x + corner_length, box_bottom)], fill=color, width=2)
+                        draw.line([(box_x, box_bottom - corner_length), (box_x, box_bottom)], fill=color, width=line_thickness)
+                        draw.line([(box_x, box_bottom), (box_x + corner_length, box_bottom)], fill=color, width=line_thickness)
                         
                         # Bottom-right corner
-                        draw.line([(box_right - corner_length, box_bottom), (box_right, box_bottom)], fill=color, width=2)
-                        draw.line([(box_right, box_bottom - corner_length), (box_right, box_bottom)], fill=color, width=2)
+                        draw.line([(box_right - corner_length, box_bottom), (box_right, box_bottom)], fill=color, width=line_thickness)
+                        draw.line([(box_right, box_bottom - corner_length), (box_right, box_bottom)], fill=color, width=line_thickness)
                     
                     # Draw corresponding colored border on the next image
                     if i+1 < len(images):
@@ -458,7 +464,7 @@ class MagGridWorkflow(WorkflowBase):
                         next_y_offset = (cell_height - next_img.height) // 2
                         
                         # Draw colored border around the next image
-                        border_width = 2
+                        border_width = line_thickness
                         next_box_x = next_x + next_x_offset
                         next_box_y = next_y + next_y_offset
                         draw.rectangle(
@@ -469,7 +475,7 @@ class MagGridWorkflow(WorkflowBase):
                                 next_box_y + next_img.height + border_width
                             ],
                             outline=color,
-                            width=border_width
+                            width=line_thickness
                         )
         
         logger.info(f"Created MagGrid visualization with {num_images} images")
