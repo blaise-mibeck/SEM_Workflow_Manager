@@ -4,6 +4,7 @@ Creates grid visualizations for comparing samples across different sessions.
 """
 
 import os
+import json
 import pandas as pd
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
