@@ -2,4 +2,9 @@ venv/*
 init_files.py
 test_imports.py
 logs/*
+__pycache__/*
+*.pyc
+
+
+
 
