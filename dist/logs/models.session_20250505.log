@@ -1,0 +1,38 @@
+2025-05-05 14:17:53,366 - models.session - INFO - SessionManager initialized
+2025-05-05 14:48:35,543 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\session_info.json
+2025-05-05 14:48:35,543 - models.session - ERROR - Error loading metadata from CSV: expected str, bytes or os.PathLike object, not NoneType
+2025-05-05 14:48:35,543 - models.session - INFO - Opened session with 16 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457
+2025-05-05 14:48:38,860 - models.session - INFO - Saved metadata to: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_metadata.csv
+2025-05-05 14:50:04,827 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:04,860 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-439\session_info.json
+2025-05-05 14:50:04,910 - models.session - INFO - Loaded metadata for 21 images from CSV file
+2025-05-05 14:50:04,910 - models.session - INFO - Opened session with 21 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-439
+2025-05-05 14:50:04,916 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:04,928 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\session_info.json
+2025-05-05 14:50:04,977 - models.session - INFO - Loaded metadata for 14 images from CSV file
+2025-05-05 14:50:04,977 - models.session - INFO - Opened session with 14 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445
+2025-05-05 14:50:04,977 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:05,027 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\session_info.json
+2025-05-05 14:50:05,077 - models.session - INFO - Loaded metadata for 14 images from CSV file
+2025-05-05 14:50:05,077 - models.session - INFO - Opened session with 14 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446
+2025-05-05 14:50:05,077 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:05,126 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-450\session_info.json
+2025-05-05 14:50:05,160 - models.session - INFO - Loaded metadata for 11 images from CSV file
+2025-05-05 14:50:05,160 - models.session - INFO - Opened session with 11 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-450
+2025-05-05 14:50:05,160 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:05,193 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-453\session_info.json
+2025-05-05 14:50:05,277 - models.session - INFO - Loaded metadata for 17 images from CSV file
+2025-05-05 14:50:05,277 - models.session - INFO - Opened session with 17 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-453
+2025-05-05 14:50:05,277 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:05,309 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-454\session_info.json
+2025-05-05 14:50:05,344 - models.session - INFO - Loaded metadata for 17 images from CSV file
+2025-05-05 14:50:05,344 - models.session - INFO - Opened session with 17 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-454
+2025-05-05 14:50:05,344 - models.session - INFO - SessionManager initialized
+2025-05-05 14:50:05,344 - models.session - INFO - Loaded session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-457\session_info.json
+2025-05-05 14:50:05,377 - models.session - INFO - Loaded metadata for 16 images from CSV file
+2025-05-05 14:50:05,377 - models.session - INFO - Opened session with 16 image files: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-457
+2025-05-05 14:52:45,494 - models.session - INFO - Saved session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\session_info.json
+2025-05-05 14:52:45,494 - models.session - INFO - Saved session summary: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\session_summary.txt
+2025-05-05 14:52:45,510 - models.session - INFO - Saved session info: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\session_info.json
+2025-05-05 14:52:45,510 - models.session - INFO - Saved session summary: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\session_summary.txt
+2025-05-05 14:52:45,510 - models.session - INFO - Session closed

@@ -1,0 +1,181 @@
+2025-05-05 14:50:04,916 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-439
+2025-05-05 14:50:04,977 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445
+2025-05-05 14:50:05,077 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446
+2025-05-05 14:50:05,160 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-450
+2025-05-05 14:50:05,277 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-453
+2025-05-05 14:50:05,344 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-454
+2025-05-05 14:50:05,377 - workflows.compare_grid - INFO - Added session: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-457
+2025-05-05 14:50:12,060 - workflows.compare_grid - INFO - Starting CompareGrid collection discovery
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-439
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-445
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-446
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-450
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-453
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-454
+2025-05-05 14:50:12,077 - workflows.compare_grid - INFO - Loaded metadata from CSV for session: SEM1-457
+2025-05-05 14:50:12,093 - workflows.compare_grid - INFO - Consolidated metadata with 110 entries
+2025-05-05 14:50:12,094 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,094 - workflows.compare_grid - INFO - Fixed path for SEM1-445_3.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_3.tiff
+2025-05-05 14:50:12,094 - workflows.compare_grid - INFO - Fixed path for SEM1-446_3.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_3.tiff
+2025-05-05 14:50:12,094 - workflows.compare_grid - INFO - Created CompareGrid workflow folder: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\CompareGridWorkflow
+2025-05-05 14:50:12,126 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 95x, 10.0 kV
+2025-05-05 14:50:12,126 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,126 - workflows.compare_grid - INFO - Fixed path for SEM1-445_10.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_10.tiff
+2025-05-05 14:50:12,126 - workflows.compare_grid - INFO - Fixed path for SEM1-446_10.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_10.tiff
+2025-05-05 14:50:12,143 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 250x, 10.0 kV
+2025-05-05 14:50:12,143 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,143 - workflows.compare_grid - INFO - Fixed path for SEM1-445_11.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_11.tiff
+2025-05-05 14:50:12,143 - workflows.compare_grid - INFO - Fixed path for SEM1-446_11.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_11.tiff
+2025-05-05 14:50:12,176 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 499x, 10.0 kV
+2025-05-05 14:50:12,177 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,177 - workflows.compare_grid - INFO - Fixed path for SEM1-445_12.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_12.tiff
+2025-05-05 14:50:12,177 - workflows.compare_grid - INFO - Fixed path for SEM1-446_12.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_12.tiff
+2025-05-05 14:50:12,194 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 1000x, 10.0 kV
+2025-05-05 14:50:12,194 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,194 - workflows.compare_grid - INFO - Fixed path for SEM1-445_13.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_13.tiff
+2025-05-05 14:50:12,194 - workflows.compare_grid - INFO - Fixed path for SEM1-446_13.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_13.tiff
+2025-05-05 14:50:12,227 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 2000x, 10.0 kV
+2025-05-05 14:50:12,227 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,227 - workflows.compare_grid - INFO - Fixed path for SEM1-445_14.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_14.tiff
+2025-05-05 14:50:12,227 - workflows.compare_grid - INFO - Fixed path for SEM1-446_14.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_14.tiff
+2025-05-05 14:50:12,261 - workflows.compare_grid - INFO - Found CompareGrid collection with 7 samples: sed mode at 3999x, 10.0 kV
+2025-05-05 14:50:12,261 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,277 - workflows.compare_grid - INFO - Found CompareGrid collection with 4 samples: sed mode at 7999x, 10.0 kV
+2025-05-05 14:50:12,277 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,277 - workflows.compare_grid - INFO - Fixed path for SEM1-445_2_TinSphere.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_2_TinSphere.tiff
+2025-05-05 14:50:12,277 - workflows.compare_grid - INFO - Fixed path for SEM1-446_2_TinSphere.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_2_TinSphere.tiff
+2025-05-05 14:50:12,294 - workflows.compare_grid - INFO - Found CompareGrid collection with 4 samples: sed mode at 10707x, 10.0 kV
+2025-05-05 14:50:12,310 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,310 - workflows.compare_grid - INFO - Fixed path for SEM1-446_2_TinSphere.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_2_TinSphere.tiff
+2025-05-05 14:50:12,310 - workflows.compare_grid - INFO - Found CompareGrid collection with 2 samples: sed mode at 12563x, 10.0 kV
+2025-05-05 14:50:12,327 - workflows.compare_grid - INFO - Found common parent directory: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:50:12,327 - workflows.compare_grid - INFO - Fixed path for SEM1-445_1_TinSphere.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_1_TinSphere.tiff
+2025-05-05 14:50:12,327 - workflows.compare_grid - INFO - Fixed path for SEM1-446_1_TinSphere.tiff: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_1_TinSphere.tiff
+2025-05-05 14:50:12,327 - workflows.compare_grid - INFO - Found CompareGrid collection with 6 samples: sed mode at 52018x, 10.0 kV
+2025-05-05 14:50:12,342 - workflows.compare_grid - INFO - Discovered 10 CompareGrid collections
+2025-05-05 14:50:26,577 - workflows.compare_grid - INFO - Creating CompareGrid with layout 3x3 for 7 samples
+2025-05-05 14:50:26,727 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_12.tiff
+2025-05-05 14:50:26,844 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_10.tiff
+2025-05-05 14:50:26,944 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_10.tiff
+2025-05-05 14:50:27,043 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_4.tiff
+2025-05-05 14:50:27,177 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_11.tiff
+2025-05-05 14:50:27,294 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_12.tiff
+2025-05-05 14:50:27,294 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_11.tiff
+2025-05-05 14:50:27,311 - workflows.compare_grid - INFO - Using user-specified font size: 55, adjusted to: 18
+2025-05-05 14:50:27,311 - workflows.compare_grid - INFO - Using font size: 18
+2025-05-05 14:50:28,445 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:50:42,410 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:50:42,410 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_12.tiff
+2025-05-05 14:50:42,426 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_10.tiff
+2025-05-05 14:50:42,429 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_10.tiff
+2025-05-05 14:50:42,429 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_4.tiff
+2025-05-05 14:50:42,429 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_11.tiff
+2025-05-05 14:50:42,429 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_12.tiff
+2025-05-05 14:50:42,444 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_11.tiff
+2025-05-05 14:50:42,461 - workflows.compare_grid - INFO - Using user-specified font size: 55, adjusted to: 27
+2025-05-05 14:50:42,461 - workflows.compare_grid - INFO - Using font size: 27
+2025-05-05 14:50:43,660 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_12.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_10.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_10.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_4.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_11.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_12.tiff
+2025-05-05 14:50:55,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_11.tiff
+2025-05-05 14:50:55,544 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:50:55,544 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:50:55,644 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:51:10,194 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:51:10,194 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_250x.png
+2025-05-05 14:51:12,561 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_250x.txt
+2025-05-05 14:51:12,578 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_250x.json
+2025-05-05 14:51:12,578 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:51:19,462 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:51:19,660 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_13.tiff
+2025-05-05 14:51:19,794 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_11.tiff
+2025-05-05 14:51:19,944 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_11.tiff
+2025-05-05 14:51:20,094 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_5.tiff
+2025-05-05 14:51:20,177 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_12.tiff
+2025-05-05 14:51:20,310 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_13.tiff
+2025-05-05 14:51:20,310 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_12.tiff
+2025-05-05 14:51:20,328 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:51:20,328 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:51:21,510 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:51:24,645 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:51:24,660 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_499x.png
+2025-05-05 14:51:27,011 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_499x.txt
+2025-05-05 14:51:27,027 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_499x.json
+2025-05-05 14:51:27,044 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:51:30,577 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:51:30,710 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_14.tiff
+2025-05-05 14:51:30,844 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_12.tiff
+2025-05-05 14:51:30,946 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_12.tiff
+2025-05-05 14:51:31,110 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_9.tiff
+2025-05-05 14:51:31,194 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_13.tiff
+2025-05-05 14:51:31,294 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_14.tiff
+2025-05-05 14:51:31,294 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_13.tiff
+2025-05-05 14:51:31,311 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:51:31,311 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:51:32,360 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:51:34,444 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:51:34,444 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_1000x.png
+2025-05-05 14:51:36,627 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_1000x.txt
+2025-05-05 14:51:36,644 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_1000x.json
+2025-05-05 14:51:36,661 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:51:46,111 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:51:46,244 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_15.tiff
+2025-05-05 14:51:46,343 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_13.tiff
+2025-05-05 14:51:46,445 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_13.tiff
+2025-05-05 14:51:46,527 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_10.tiff
+2025-05-05 14:51:46,644 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_14.tiff
+2025-05-05 14:51:46,760 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_15.tiff
+2025-05-05 14:51:46,776 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_14.tiff
+2025-05-05 14:51:46,778 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:51:46,778 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:51:47,893 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:51:49,946 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:51:49,946 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_2000x.png
+2025-05-05 14:51:52,111 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_2000x.txt
+2025-05-05 14:51:52,111 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_2000x.json
+2025-05-05 14:51:52,128 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:51:57,378 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:51:57,511 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_16.tiff
+2025-05-05 14:51:57,661 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_14.tiff
+2025-05-05 14:51:57,810 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_14.tiff
+2025-05-05 14:51:57,945 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_11.tiff
+2025-05-05 14:51:58,027 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_15.tiff
+2025-05-05 14:51:58,127 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_16.tiff
+2025-05-05 14:51:58,127 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_15.tiff
+2025-05-05 14:51:58,144 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:51:58,144 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:51:59,127 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples
+2025-05-05 14:52:00,311 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:52:00,311 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_3999x.png
+2025-05-05 14:52:02,377 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_3999x.txt
+2025-05-05 14:52:02,377 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_3999x.json
+2025-05-05 14:52:02,394 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:52:06,710 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x1 for 4 samples
+2025-05-05 14:52:06,810 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_10.tiff
+2025-05-05 14:52:06,910 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_16.tiff
+2025-05-05 14:52:07,011 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_10.tiff
+2025-05-05 14:52:07,011 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_16.tiff
+2025-05-05 14:52:07,030 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 60
+2025-05-05 14:52:07,030 - workflows.compare_grid - INFO - Using font size: 60
+2025-05-05 14:52:07,544 - workflows.compare_grid - INFO - Created CompareGrid visualization with 4 samples
+2025-05-05 14:52:08,745 - workflows.compare_grid - INFO - Found common parent directory for export: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM
+2025-05-05 14:52:08,745 - workflows.compare_grid - INFO - Saving grid image to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_7999x.png
+2025-05-05 14:52:09,911 - workflows.compare_grid - INFO - Saving caption to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_7999x.txt
+2025-05-05 14:52:09,947 - workflows.compare_grid - INFO - Saving collection data to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids\CompareGrid_sed_7999x.json
+2025-05-05 14:52:09,949 - workflows.compare_grid - INFO - Export completed successfully to: T:\Clients\M-O\NewAmsterdam Pharma B.V.,\Projects\2025149_NonGMP_Otra_Comprehensive screen\Data\SEM\CompareGrids
+2025-05-05 14:52:22,410 - workflows.compare_grid - INFO - Creating CompareGrid with layout 4x2 for 7 samples
+2025-05-05 14:52:22,428 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-439\SEM1-439_16.tiff
+2025-05-05 14:52:22,428 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-445\SEM1-445_14.tiff
+2025-05-05 14:52:22,428 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM\SEM1-446\SEM1-446_14.tiff
+2025-05-05 14:52:22,428 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-450\SEM1-450_11.tiff
+2025-05-05 14:52:22,446 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-453\SEM1-453_15.tiff
+2025-05-05 14:52:22,446 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-454\SEM1-454_16.tiff
+2025-05-05 14:52:22,446 - workflows.compare_grid - INFO - Successfully loaded image: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457\SEM1-457_15.tiff
+2025-05-05 14:52:22,462 - workflows.compare_grid - INFO - Using user-specified font size: 60, adjusted to: 30
+2025-05-05 14:52:22,462 - workflows.compare_grid - INFO - Using font size: 30
+2025-05-05 14:52:23,445 - workflows.compare_grid - INFO - Created CompareGrid visualization with 7 samples

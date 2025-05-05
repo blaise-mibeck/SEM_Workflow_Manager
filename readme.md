@@ -18,6 +18,15 @@ A desktop application for organizing, processing, and visualizing Scanning Elect
 
 - Python 3.7 or higher
 
+### Dependencies
+
+- qtpy - Qt bindings (allows using either PyQt5 or PySide2)
+- pyqt5 - Qt implementation
+- pillow - Image processing
+- opencv-python - Computer vision
+- numpy - Numerical operations
+- pandas - Data analysis and manipulation
+
 ### Setup
 
 1. Clone the repository:

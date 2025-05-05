@@ -1,0 +1,31 @@
+2025-05-05 14:48:48,090 - workflows.mode_grid - INFO - Starting ModeGrid collection discovery with 16/16 valid images
+2025-05-05 14:48:48,090 - workflows.mode_grid - INFO - No manual Collection field found in metadata
+2025-05-05 14:48:48,092 - workflows.mode_grid - INFO - Found the following modes in metadata:
+2025-05-05 14:48:48,092 - workflows.mode_grid - INFO -   - sed_10kv: 14 images
+2025-05-05 14:48:48,092 - workflows.mode_grid - INFO -   - bsd_10kv: 2 images
+2025-05-05 14:48:48,092 - workflows.mode_grid - INFO - Starting position-based collection discovery
+2025-05-05 14:48:48,092 - workflows.mode_grid - INFO - Found 16 valid images: 16 regular, 0 ChemSEM
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Created 9 position groups for collection discovery
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.00192373_-0.00179202: 6 images, 1 unique modes
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.00192403_-0.00179085: 1 images, 1 unique modes
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.0147708_-0.0144703: 2 images, 1 unique modes
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.00107994_0.00047109: 1 images, 1 unique modes
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.001072_0.000471619: 2 images, 1 unique modes
+2025-05-05 14:48:48,094 - workflows.mode_grid - INFO - Position group -0.00111162_0.00047367: 1 images, 1 unique modes
+2025-05-05 14:48:48,095 - workflows.mode_grid - INFO - Position group -0.00112614_0.000475307: 1 images, 1 unique modes
+2025-05-05 14:48:48,095 - workflows.mode_grid - INFO - Position group -0.00112321_0.000474307: 1 images, 1 unique modes
+2025-05-05 14:48:48,095 - workflows.mode_grid - INFO - Position group -0.00112523_0.000473075: 1 images, 1 unique modes
+2025-05-05 14:48:48,095 - workflows.mode_grid - INFO - Position -0.00192373_-0.00179202 has these modes: sed_10kv(6)
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position -0.00192373_-0.00179202 - only has 1 unique modes
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00192403_-0.00179085 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Position -0.0147708_-0.0144703 has these modes: bsd_10kv(2)
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position -0.0147708_-0.0144703 - only has 1 unique modes
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00107994_0.00047109 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Position -0.001072_0.000471619 has these modes: sed_10kv(2)
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position -0.001072_0.000471619 - only has 1 unique modes
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00111162_0.00047367 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00112614_0.000475307 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00112321_0.000474307 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Skipping position group -0.00112523_0.000473075 - only 1 images
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Created 0 collections from position-based grouping
+2025-05-05 14:48:48,096 - workflows.mode_grid - INFO - Total discovered ModeGrid collections: 0

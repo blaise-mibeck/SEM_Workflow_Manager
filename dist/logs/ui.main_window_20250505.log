@@ -1,0 +1,21 @@
+2025-05-05 14:17:53,515 - ui.main_window - INFO - Main window initialized
+2025-05-05 14:48:35,543 - ui.main_window - INFO - Session opened signal received: T:/Clients/M-O/NewAmsterdam Pharma B.V.,/Projects/2025149_NonGMP_Otra_Comprehensive screen/Data/SEM/SEM1-457
+2025-05-05 14:48:46,729 - ui.main_window - INFO - Discovered 13 collections for MagGrid
+2025-05-05 14:48:48,090 - ui.main_window - INFO - Discovered 0 collections for CompareGrid
+2025-05-05 14:48:48,096 - ui.main_window - INFO - Discovered 0 collections for ModeGrid
+2025-05-05 14:48:55,461 - ui.main_window - INFO - Collection selected signal received: 8c7447cd-0549-49e2-98ab-071feff909b6
+2025-05-05 14:49:13,195 - ui.main_window - INFO - Create grid requested signal received: 8c7447cd-0549-49e2-98ab-071feff909b6
+2025-05-05 14:49:19,760 - ui.main_window - INFO - Create grid requested signal received: 8c7447cd-0549-49e2-98ab-071feff909b6
+2025-05-05 14:49:28,494 - ui.main_window - INFO - Export requested signal received: 8c7447cd-0549-49e2-98ab-071feff909b6
+2025-05-05 14:49:33,111 - ui.main_window - INFO - Collection selected signal received: 63c7222e-ba69-4640-8aa1-c65a3dbe5f64
+2025-05-05 14:49:36,261 - ui.main_window - INFO - Export requested signal received: 63c7222e-ba69-4640-8aa1-c65a3dbe5f64
+2025-05-05 14:49:40,696 - ui.main_window - INFO - Collection selected signal received: 878aaf8c-bd62-44a5-ac21-caf9b87b8d1b
+2025-05-05 14:49:44,894 - ui.main_window - INFO - Export requested signal received: 878aaf8c-bd62-44a5-ac21-caf9b87b8d1b
+2025-05-05 14:49:47,860 - ui.main_window - INFO - Collection selected signal received: 36ac3773-61b9-4078-b0c6-c1ede4522ca6
+2025-05-05 14:49:49,610 - ui.main_window - INFO - Export requested signal received: 36ac3773-61b9-4078-b0c6-c1ede4522ca6
+2025-05-05 14:51:10,194 - ui.main_window - INFO - Export requested signal received: compare_sed_250_10.0
+2025-05-05 14:51:24,645 - ui.main_window - INFO - Export requested signal received: compare_sed_499_10.0
+2025-05-05 14:51:34,444 - ui.main_window - INFO - Export requested signal received: compare_sed_1000_10.0
+2025-05-05 14:51:49,946 - ui.main_window - INFO - Export requested signal received: compare_sed_2000_10.0
+2025-05-05 14:52:00,310 - ui.main_window - INFO - Export requested signal received: compare_sed_3999_10.0
+2025-05-05 14:52:08,745 - ui.main_window - INFO - Export requested signal received: compare_sed_7999_10.0
